@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Variables como pines</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Las variables como pines son una forma de almacenar pines del Arduino, es decir, del sistema embebido como tal,
+            para de esta manera empezar a trabajar con él a lo largo del programa. Dicho de otra forma, lo que se hace es 
+            dar nombre a cualquiera de los pines del Arduino de modo que sea más fácil de reconocer o saber lo que está 
+            conectado a él y por ende, facilitar y agilizar del desarrollo de cualquier algoritmo que necesite controlar 
+            dispositivos externos para que estos cumplan cualquier función específica.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <img src="{% static 'Im/vcp.png' %}" style="width: 90%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para nombrar un pin como una variable, se deben tener en cuenta tres cosas. Primero se debe poner el tipo de 
+            dato que para este caso siempre será de tipo entero, es decir, se utiliza el comando <span style="color: rgb(200, 147, 0);">int</span>, 
+            pues esto está definido por Arduino; luego, se debe poner el nombre que va a tener dicha variable, y hay que 
+            recordar que en este caso el nombre comunmente coinside con el dispositivo el cuál está conectado a este pin, 
+            ya que de esta manera se hace más fácil reconocer el pin dentro del porgrama y así utilizarlo más facilmente. 
+            Por último, se le debe asignar un número de pin al cual se conectó el dispositipo que se desea utilizar, solo 
+            debe poner el signo de igual y posteriormente poner el número, finalizando con un punto y coma.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+int nombre_del_pin = pin_conectado;
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'vcp_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/ciclos#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #2</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Hacer un programa que permita sumar la sucesión de base 2 a la n dado un número n ingresado por el 
+                    usuario. Se desea que se muestre la sucesión y el resultado de dicha sucesión. Por ejemplo: 2^1,2^2 = 5.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int n;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int suma = 0;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>void setup(){</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>    Serial.begin(9600);</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>}</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>void loop(){</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>    Serial.print("Ingrese el número n de la sucesión: ");</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>    n = Serial.read();</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>    for(int i=1; i<=n; i++){</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>        Serial.print("2^");</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>        Serial.print(i);</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>        Serial.print(" = ");</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>        Serial.println(pow(2,i));</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>        suma = suma+pow(2,i);</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>    }</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>    Serial.print("La suma es: ");</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>    Serial.println(suma);</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese el número n de la sucesión">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero la cual va a almacenar el número n ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero la cual va a almacenar la suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se imprime un mensaje informativo, el cual pide al usuario ingresar el número de la sucesión.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se lee el puerto serial para almacenar el valor ingresado por teclado en la variable del número de la sucesión.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se inicia el ciclo for iniciando el contador en 1, terminando en el número de la sucesión (n) y en pasos de a 1.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se imprime un mensaje en el monitor serial el cual ayuda a mostrar la sucesión.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Ahora se imprime el contador el cual equivale a la potencia a la cual está elevada la base.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Se imprime un mensaje en el monitor serial el cual ayuda a mostrar la igualdad en la sucesión.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Luego se imprime el resultado de la base elevada a la potencia en la que va el contador.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se hace la sumatoria de las potencias y se guardan en la variable suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>Se cierra el ciclo for.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">16</span>Se imprime un mensaje informativo, el cual le avisa a el usuario que va a ver el resultado de la suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">17</span>Para finalizar, se imprime la variable suma en la cual está almacenada el valor total tras sumar cada número resultante de la sucesión.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">18</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 1,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+
+        if (!isNaN(valor_entrada)) {
+            cont++
+            valores.push(valor_entrada)
+            //Código
+            suma = 0
+            n = valores[0]
+            mensaje1 = ''
+            mensaje2 = ''
+
+            if (cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                for(i=1; i<=n; i++){
+                    mensaje1 = "2^" + i + " = " + Math.pow(2,i)
+                    document.getElementById('resultado').innerHTML += mensaje1 + "<br>"
+                    suma = suma+Math.pow(2,i)
+                }
+                mensaje2 = 'La suma es: ' + suma
+                document.getElementById('resultado').innerHTML += mensaje2
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            } else {
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

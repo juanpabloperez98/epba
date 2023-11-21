@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Condicionales</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Los condicionales son estructuras que permiten comprobar expresiones lógicas, es decir, permiten evalúar si 
+            el resultado de dicha expresión es falsa o verdadera y a partir de este resultado, tomar una decisión de si 
+            ir por un camino o por otro. De esta manera, esta estructura permite tener un control de flujo de ejecución 
+            del programa, lo que hace de esta una herramienta muy potente, pues permite que un programa sea más dinámico 
+            y complejo. Dentro de esta estructura se encuentran tres tipos, la condición <span style="color: peru;">if
+            </span>, <span style="color: peru;">else if </span> y <span style="color: peru;">else</span>; cada una de 
+            estas cumple una función dentro del control que la estructura brinda. Por ejemplo el <span style="color: peru;">if
+            </span>, evalúa directamente si la expresión se cumple y, a partir de esta decisión toma un camino u otro, 
+            luego sigue el <span style="color: peru;">else if</span>, pues si en el <span style="color: peru;">if
+            </span> el resultado fue negativo, la condición <span style="color: peru;">else if</span> permite evaluar 
+            una nueva expresión y comprobar si esta si se cumple, de igual manera, dependiendo del resutlado tomará un 
+            camina u otro. Por último, se tiene el <span style="color: peru;">else</span>, el cual brinda la posibilidad 
+            de que si no se cumplió ninguno de los anteriores, se ejecutará por ese camino.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <br><br><br><br><br>
+        <img src="{% static 'Im/condiciones.png' %}"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            En esta sección se explica un poco de la sintaxis de cada estructura, lo que se va a hacer, será mostrar la 
+            estructura y su sintaxis progresivamente para observar cómo al sumar cada tipo de condición el flujo mejora. 
+            Para empezar se tiene la sentencia <span style="color: peru;">if</span> la cual se muestra a continuación:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+if(expresion_logica){
+    Instrucciones;
+}
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Luego, se puede añadir el comando <span style="color: peru;">else if</span>, tal y como se muestra en el 
+            siguiente fragmento, esto con el fin de poner evidencia un poco de mejor control, el cual brinda la nueva 
+            estructura de condición, y así permite elegir el flujo que se desea:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+if(expresion_logica){
+    Instrucciones;
+}
+else if(expresion_logica){
+    Instrucciones_1;
+}
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Por último, se agrega la sentencia else, gracias a este se puede tener un control completo del programa 
+            puesto que este permite que, dado que no se cumplió ninguna de las expresiones anteriores, el programa tomará 
+            este camino y seguirá con la ejecución del programa, es decir, este se puede ver como una opción por defecto. 
+            A continuación se muestra cómo:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+if(expresion_logica){
+    Instrucciones;
+}
+else if(expresion_logica){
+    Instrucciones_1;
+}
+else{
+    Instrucciones_2;
+}
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><br><hr/><br>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo1.png' %}" style="width: 67%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo2.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo3.png' %}" style="width: 65%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo2.png' %}" style="width: 90%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo2.png' %}" style="width: 90%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/condicionales-ejemplo2.png' %}" style="width: 90%;"/>
+                        <br><br>
+                        <a href="{% url 'condicionales_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

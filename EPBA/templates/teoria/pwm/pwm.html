@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>PWM</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué es?</h2>
+        <hr/>
+        <p class="text-justify">
+            El PWM, de las siglas en inglés Pulse Width Modulation, es modulación por ancho de pulsos de una señal y se 
+            refiere a una técnica que lo que hace es modificar el ciclo de trabajo de una señal periódica, en este caso 
+            una señal cuadrada por tratarse de un Arduino, para controlar la cantidad de energía que se envía a una carga.
+            Lo que Arduino pretende con esto es poder variar la energía que se envía a través de algunos de sus pines para
+            por ejemplo cambiar la intensidad de luz en un led o controlar la velocidad de un motor, los pines que pueden 
+            realizar esta variación o que tienen PWM, se identifican con el símbolo ~ al lado del número del pin. Gracias 
+            a esto es que Arduino es una gran herramienta y un sistema embebido muy útil a la hora de interactuar con el 
+            exterior, por lo que es muy usado para aplicaciones como robótica o automatización. En Arduino el valor del 
+            PWM puede variar entre 0 y 255, valores los cuales se deben de tener en cuenta a la hora de configurar o enviar 
+            señales a los diferentes positivos conectados a este, ya que dependiendo del valor van a funcionar de una u 
+            otra manera.
+        </p>
+    </div>
+    <div class="col-md-5 mx-auto text-center" id="expimg">
+        <br><br>
+        <img src="{% static 'Im/pwm.png' %}" style="width: 50%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Esta función de PWM solo la tienen algunos pines digitales del Arduino y por ende se dijo que la señal era 
+            cuadrada. Como se sabe que los pines que tienen esta función son digitales se debe utilizar siempre el comando
+            digitalWrite(), donde sus parámetros de entrada, es decir, lo que está dentro de los paréntesis son: primero
+            el nombre de la variable que almacena el pin o el pin directamente al que está conectado el dispostivo que se
+            quiere controlar; Y segundo, se debe poner el valor del PWM que cabe recordar debe estar entre 0 y 255.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+digitalWrite(pin, valor_PWM);
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pwm_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

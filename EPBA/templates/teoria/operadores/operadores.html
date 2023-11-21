@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Operadores</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Los operadores son un tipo de símbolo o carácter que pueden aparecer en las expresiones u operaciones, estos 
+            indican al programa la realización de determinadas operaciones lógicas o matemáticas. Estos se pueden aplicar a 
+            variables u otros objetos denominados operandos los cuales luego de ser operados van a arrojar valores ya sea 
+            de tipo numérico o booleano, dependiendo cuál sea el caso.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <img src="{% static 'Im/operadores.png' %}" style="width: 60%;"/>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>Operadores aritméticos</h2>
+        <hr/>
+        <p class="text-justify">
+            Los operadores aritméticos son aquellos que se representan con símbolos y con los cuales, dependiendo de su 
+            posición, realizan una operación matemática u asignación a los diferentes datos que se deben de operar para 
+            la obtención de los resultados solicitados o los cuales dan solución a un problema.
+        </p>
+</div>
+<div class="col-md-5" id="exp">
+        <h2>Operadores lógicos</h2>
+        <hr/>
+        <p class="text-justify">
+            Los operadores lógicos son un tipo de símbolo que puede aparecer en las expresiones lógicas, e indican al 
+            compilador la realización de determinadas operaciones lógicas, de las cuales se van a obtener valores booleanos 
+            ya sea, true o false, 1 o 0 y, en el caso de Arduino high o low. Con ese resultado se puede dar control a un 
+            programa utilizando las demás estructuras que brindan dicha posibilidad.
+        </p>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Operadores relacionales</h2>
+        <hr/>
+        <p class="text-justify">
+            Los operadores relacionales son los que permiten asignar o dar un valor o valores específicos a una variable 
+            para de esta manera hacer saber al programa el valor de esta y posteriormente operar con ella o compararla con 
+            otras variables. 
+        </p>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para cada operador puede cambiar un poco la sintaxis, por lo que se mostrarán los casos que se pueden presentar 
+            en un programa y de esta manera dejar claridad en el alumno de cómo se deben usar y en qué casos. Para empezar, 
+            se tienen los operadores aritméticos, estos se dividen en dos, los <i>unidireccionales</i> y los <i>bidireccionales</i>. 
+            Los <i>unidireccionales</i> son aquellos que tienen operando a su lado derecho y se usan para dar un sentido a los 
+            valores, a continuación se muestra cómo:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+int numero = -18;
+int dato = +18;
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Por otra parte, los <i>bidireccionales</i> son los que tienen operandos a cada lado y son estos los que permiten 
+            realizar operacionas matemáticas tales como la suma, resta, multiplicación y división, en este caso, en la 
+            variable se guarda el resultado de la operación que se realice, en el siguiente fragmento se muestra cómo:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+int numero = (20-18);
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Ahora, en los operadores relacionales, solo basta con darle un valor a una variable, de esta manera la 
+            variable toma el valor que se le asigne tal y como se muestra a continuación:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+int numero = 20;
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Por último, se tienen los operadores lógicos, estos son únicamente <i>bidireccionales</i>, es decir, tiene un 
+            operando a cada lado y de esta manera evalúa si una expresión es falsa o verdadera. En el siguiente fragmento 
+            se muestra cómo:
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+bool estado = (20>=10);
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Tablas de operadores</h2>
+        <hr/><br>
+        <table class="table mt-3">
+            <thead class="text-center">
+                <tr style="background-color: #0f8f94; color: black;">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Operador abreviado</th>
+                    <th scope="col">Significado</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr>
+                    <td class="font-weight-bold">Asignación</td>
+                    <td>x = y</td>
+                    <td>x = y</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Asignación de adición</td>
+                    <td>x += y</td>
+                    <td>x = x + y</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Asignación de resta</td>
+                    <td>x -= y</td>
+                    <td>x = x - y</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Asignación de multiplicación</td>
+                    <td>x *= y</td>
+                    <td>x = x * y</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Asignación de división</td>
+                    <td>x /= y</td>
+                    <td>x = x / y</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Asignación de residuo</td>
+                    <td>x %= y</td>
+                    <td>x = x % y</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table class="table mt-3">
+            <thead>
+                <tr style="background-color: #0f8f94; color: black;">
+                    <th scope="col">Operador</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="font-weight-bold">Igual (==)</td>
+                    <td class="text-left">Devuelve true si los operandos son iguales.</td>
+                    <td>3 == var1</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Diferente (!=)</td>
+                    <td class="text-left">Devuelve true si los operandos son diferentes.</td>
+                    <td>var1 != 4</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Mayor que (>)</td>
+                    <td class="text-left">Devuelve true si el operando izquierdo es mayor que el operando derecho.
+                    </td>
+                    <td>var2 > var1</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Mayor o igual que (>=)</td>
+                    <td class="text-left">Devuelve true si el operando izquierdo es mayor o igual que el operando derecho.</td>
+                    <td>var2 >= var1</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Menor que (<)</td>
+                    <td class="text-left">Devuelve true si el operando izquierdo es menor que el operando derecho.
+                    </td>
+                    <td>var1 < var2</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Menor o igual que (<=)</td>
+                    <td class="text-left">Devuelve true si el operando izquierdo es menor o igual que el operando
+                        derecho.</td>
+                    <td>var1 <= var2</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table class="table mt-3">
+            <thead>
+                <tr style="background-color: #0f8f94; color: black;">
+                    <th scope="col">Operador</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="font-weight-bold">Residuo (%)</td>
+                    <td class="text-left">Operador binario. Devuelve el resto entero de dividir los dos operandos.</td>
+                    <td>12 % 5 devuelve 2</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Negación unaria (-)</td>
+                    <td class="text-left">Operador unario. Devuelve la negación de su operando.</td>
+                    <td>Si x es 3, entonces -x devuelve -3.</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Positivo unario (+)</td>
+                    <td class="text-left">Operador unario. Intenta convertir el operando en un número, si aún no lo es.</td>
+                    <td>+"3" devuelve 3.
+                        +true devuelve 1.</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table class="table mt-3">
+            <thead>
+                <tr style="background-color: #0f8f94; color: black;">
+                    <th scope="col">Operador</th>
+                    <th scope="col">Uso</th>
+                    <th scope="col">Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="font-weight-bold">AND Lógico (&&)</td>
+                    <td>expr1 && expr2</td>
+                    <td class="text-justify">Cuando se usa con valores booleanos, && devuelve true si ambos operandos son true; de lo contrario, devuelve false.</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">OR lógico (||)</td>
+                    <td>expr1 || expr2</td>
+                    <td class="text-justify">Cuando se usa con valores booleanos, || devuelve true si alguno de los operandos es true; si ambos son falsos, devuelve false</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">NOT lógico (!)</td>
+                    <td>!expr</td>
+                    <td class="text-justify">Niega la expresión o el valor al que se le antepone la negación.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><br><hr/><br>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo1.png' %}" style="width: 100%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo2.png' %}" style="width: 92%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo3.png' %}" style="width: 83%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo4.png' %}" style="width: 100%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo5.png' %}" style="width: 100%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/operadores-ejemplo6.png' %}" style="width: 100%;"/><br><br>
+                        <a href="{% url 'operadores_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

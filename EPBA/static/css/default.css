@@ -1,0 +1,315 @@
+	body
+	{
+		margin: 0px;
+		padding: 0px;
+		background: #0f8f94;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12pt;
+		font-weight: 300;
+		color: #000000;
+	}
+	h1, h2, h3
+	{
+		margin: 0;
+		padding: 0;
+	}
+	p, ol, ul
+	{
+		margin-top: 0;
+	}
+	ol, ul
+	{
+		padding: 0;
+		list-style: none;
+	}
+	p
+	{
+		line-height: 180%;
+	}
+	a
+	{
+		color: #151515;
+	}
+	a:hover
+	{
+		text-decoration: none;
+	}
+	.container
+	{
+		overflow: hidden;
+		margin: 0em auto;
+		width: 1500px;
+	}
+#header-wrapper
+{
+	background-size: 100% auto;
+}
+#header
+{
+	overflow: hidden;
+	position: relative;
+	padding: 4em;
+}
+
+.button
+{
+	display: inline-block;
+	margin-top: 0.5em;
+	padding: 1em 2em 1em 2em;
+	background: #0f8f94;
+	border-radius: 7px;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.90em;
+	color: #FFF;
+}
+.button:hover
+{
+	color: #000000;
+}
+.tbox1,
+.tbox2
+{
+	width: 490px;
+}
+.tbox1
+{
+	float: left;
+}
+.tbox2
+{
+	float: right;
+}
+#logo
+{
+	position: absolute;
+	top: 2.6em;
+	left: 0;
+}
+#logo img
+{
+	width: 50px;
+}
+#logo h1
+{
+	font-size: 2.5em;
+	font-weight: 600;
+}
+#logo a
+{
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #FFF;
+}
+#menu
+{
+	position: absolute;
+	top: 3.5em;
+	right: 0;
+}
+#menu ul
+{
+	display: inline-block;
+}
+#menu li
+{
+	display: block;
+	float: left;
+	text-align: center;
+}
+#menu li a, #menu li span
+{
+	padding: 1em 1.5em;
+	letter-spacing: 0.10em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 0.90em;
+	color: #FFF;
+}
+#menu li a:hover{
+	color: #000000;
+}
+#banner
+{
+	overflow: hidden;
+	padding: 3em 0em 3em 0em;
+	margin-bottom: 4em;
+	border-top: 1px solid rgba(0,0,0,0.08);
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	text-align: center;
+	color: rgba(255, 255, 255);
+}
+#page-wrapper
+{
+	background-size: 100% auto;
+	overflow: hidden;
+	padding: 4em;
+	background: #FFF;
+}
+#page-wrapper1
+{
+	background-size: 100% auto;
+	overflow: hidden;
+	padding: 4em;
+	background: #FFF;
+}
+#featured
+{
+	overflow: hidden;
+	text-align: center;
+}
+#featured .title h2
+{
+	margin-bottom: 0.5em;
+	text-align: center;
+	font-size: 2.6em;
+	color: #000000;
+}
+#featured h2
+{
+	padding-bottom: 1em;
+	text-transform: uppercase;
+	font-size: 1.8em;
+	font-weight: 300;
+	color: #000000;
+}
+#featured img
+{
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+#featured .padding-bottom
+{
+	margin-bottom: 4em;
+}
+#siguiente
+{
+	background-color: black;
+	height: 70px;
+	top: 512px;
+	left: 96%;
+	width: 60px;
+}
+#anterior
+{
+	background-color: black;
+	height: 70px;
+	top: 512px;
+	left: -15px;
+	width: 60px;
+}
+#mod
+{	
+	margin-left: 56px;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#mod1
+{	
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+.mod1
+{	
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	background: #F0F0F0;
+  }
+  
+  
+  /* Base color: saturation 0; */
+  
+  .hljs,
+  .hljs-subst {
+	color: #444;
+  }
+  
+  .hljs-comment {
+	color: #888888;
+  }
+  
+  .hljs-keyword,
+  .hljs-attribute,
+  .hljs-selector-tag,
+  .hljs-meta-keyword,
+  .hljs-doctag,
+  .hljs-name {
+	font-weight: bold;
+	color: rgb(187, 126, 14);
+  }
+  
+  
+  /* User color: hue: 0 */
+  /* .hljs-number */
+  .hljs-type,
+  .hljs-string,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-quote,
+  .hljs-template-tag,
+  .hljs-deletion {
+	color: #880000;
+  }
+  
+  .hljs-title,
+  .hljs-section {
+	color: #880000;
+	font-weight: bold;
+  }
+  
+  .hljs-regexp,
+  .hljs-symbol,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-link,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+	color: #BC6060;
+  }
+  
+  
+  /* Language color: hue: 90; */
+  
+  .hljs-literal {
+	color: #78A960;
+  }
+  
+  .hljs-built_in,
+  .hljs-bullet,
+  .hljs-code,
+  .hljs-addition {
+	color: #397300;
+  }
+  
+  
+  /* Meta color: hue: 200 */
+  
+  .hljs-meta {
+	color: #1f7199;
+  }
+  
+  .hljs-meta-string {
+	color: #4d99bf;
+  }
+  
+  
+  /* Misc effects */
+  
+  .hljs-emphasis {
+	font-style: italic;
+  }
+  
+  .hljs-strong {
+	font-weight: bold;
+  }
+  

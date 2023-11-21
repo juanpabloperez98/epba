@@ -1,0 +1,74 @@
+#content{
+    background-color: white;
+    padding: 2em;
+}
+#ejemplos{
+    background-color: white;
+    padding: 2em;
+}
+#sig{   
+    background-color: black;
+    width: 60px;
+    height: 60%;
+    margin-top: 60px;
+    border: 2px solid blue;
+}
+#ant{
+    background-color: black;
+    width: 60px;
+    height: 60%;
+    margin-top: 60px;
+    border: 2px solid blue;
+}
+#sig1{   
+    background-color: black;
+    width: 60px;
+    height: 60%;
+    margin-top: 80px;
+    border: 2px solid blue;
+}
+#ant1{
+    background-color: black;
+    width: 60px;
+    height: 60%;
+    margin-top: 80px;
+    border: 2px solid blue;
+}
+#mod{
+    text-align: center;	
+	margin-left: 50px;
+	padding: 15px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#mod1{	
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#mod img{
+    width: 100%;
+}
+#exp{
+    text-align: center;
+    padding: 20px;
+    margin-left: 65px;
+    border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#exp1{
+    text-align: center;
+    padding: 20px;
+    margin-left: 95px;
+    border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#expimg{
+    text-align: center;
+    padding: 20px;
+    margin-left: 65px;
+	background-color: rgb(255, 255, 255);
+}
+#expimg img{
+    border-radius: 20px;
+}

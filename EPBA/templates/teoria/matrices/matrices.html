@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Matrices</h1>
+        <br><hr>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Un arreglo bidimensional o matriz, es una estructura de datos o un tipo de dato el cual permite almacenar 
+            varios valores a la vez que se pueden ordenar en forma de tabla y con la cual se puede realizar, al igual que 
+            con cualquier otro tipo de dato, cualquier operación tanto lógica como matemática, obtienendo los mismo valores 
+            pero, como ya se mencionó, no solo uno, sino lo que se deseen. Otra forma de ver los arreglos bidimensionales 
+            es como una tabla, es decir que estos pueden interpretar una serie de datos puestas sobre un plano cartesiano, 
+            lo que hace que esta sea una herramienta muy potente para realizar programas que se usen por ejemplo, para el 
+            análisis de señales o la solución a problemas que den como resultado sistemas de ecuaciones.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <br><br>
+        <img src="{% static 'Im/matrices.png' %}" style="width: 100%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para declarar una matriz, se hace de manera muy similar a una variable, la diferencia es que a una matriz hay 
+            que especificarle su tamaño dado por el número de filas y el número de columnas y, por otra parte, para darle 
+            un valor se debe hacer entre llaves y el tamaño se debe poner entre dos corchetes. A continuación, se muestra 
+            cómo es la estructura y sintaxis correcta de los arreglos bidimensionales.
+        </p>
+        <div class="col-md-10 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+tipo_de_dato nombre_de_la_matriz[numeroFilas][numeroColumnas];
+            </code>
+            </pre>
+        </div>
+        <br>
+        <p class="text-justify">
+            Otra forma de hacerlo, es declarando la matriz y posteriormente llenandola a través de un ciclo o 
+            manualmente, esto dependiendo cuál sea la necesidad del programa.
+        </p>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><br><hr/><br>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <<img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'matrices_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

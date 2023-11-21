@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row mx-auto">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/variables#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #3</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><hr/>
+                <p>
+                    Para empezar con Arduino, se pide realizar un programa en el que el usuario ingrese un dato, pero en 
+                    este caso que sea de tipo double, ya que este permite almacenar datos más grandes, a través del teclado 
+                    y posteriormente este sea mostrado en pantalla.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3><hr/>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>double dato = 0;</span>
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>void setup(){</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>  Serial.begin(9600);</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>}</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>void loop(){</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>  Serial.print("Ingrese un dato");</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>  dato = Serial.read();</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>  Serial.print("El dato es: ");</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>  Serial.print(dato);</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese un dato">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                El dato es: <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3><hr/>
+      <pre>
+        <code class="language-c++ text-justify">
+<span><span class="pr-n mr-3" style="color: blue;"> 1</span>Declaramos una variable llamada dato de tipo double.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 2</span>Se inicia la función de configuración.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 3</span>Se comienza la comunicación serial.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 4</span>Ahora, se finaliza la función de configuración.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 5</span>Luego se inicializa la función del ciclo infinito.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 6</span>Se imprime un mensaje en el que se pide el dato al usuario.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 7</span>Se almacena la lectura de lo que se ingresa por teclado en la variable dato.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 8</span>Luego, se imprime un mensaje que acompaña el resultado.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 9</span>Posteriormente, se imprime el valor almacenado en la variable dato.</span>
+<span><span class="pr-n mr-3" style="color: blue;">10</span>Por último, se termina la función del ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 1,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseFloat(document.getElementById(id_select).value)
+        if (!isNaN(valor_entrada)){
+            valores.push(valor_entrada)
+            cont++
+            if (cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = valores[0]
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato numérico!',
+            })
+        }
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

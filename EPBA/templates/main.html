@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'css/default.css' %}" rel="stylesheet" type="text/css" media="all" />
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="https://drive.google.com/file/d/1LzaubkaA_VZE0z7w_Ml2r4yRVpWhBKgY/view?usp=sharing" target="blank" accesskey="4">Manual técnico</a></li>
+                <li><a href="https://drive.google.com/file/d/1XXt1fj0Gnu5LXbVW-i7Wv1x1qaZKHzzB/view?usp=sharing" target="blank" accesskey="5">Manual de usuario</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="banner" class="container">
+        <div class="row mx-auto">
+            <div class="col-md-12">
+                <h1>Enseñanza de la programación basado en Arduino</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row mx-auto">
+            <div class="col-md-12 text-center">
+                <p>
+                    Enseñanza de la programación basado en Arduino, es un software creado por la Univerdidad Tecnológica 
+                    de Pereira que tiene como objetivo enseñar al alumno a programar utilizando como herramienta el 
+                    lenguaje de programación llamado Arduino. En este se destacan dos secciones principales las cuales 
+                    componen este aplicativo web, la sección de teoría y la sección práctica, en la teoría se explican los 
+                    conceptos básicos de este lenguaje a través de los cuales se va a programar, su estructura, su 
+                    sintaxis y el manejo que se le debe dar para la solución de cualquier problema a través de este. Por 
+                    otra parte, en la práctica se busca generar en el alumno la capacidad de poder observar y dar solución 
+                    a diferentes problemas que se pueden presentar a la hora de desarrollar un proyecto.
+                </p>
+            </div>
+        </div>		
+	</div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<div id="page-wrapper1">
+	<div id="featured" class="container">
+		<div class="title">
+            <h2>Teoría</h2>
+            <hr/><br>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-12">
+                <p class="text-justify">
+                    Como ya se había mencionado anteriormente, en la sección de teoría se van a explicar y a mostrar los 
+                    diferentes conceptos básicos y estructuras que componen este lenguaje de programación, todo esto se 
+                    hace con el fin de inculcar en el estudiante todo lo necesario para que este pueda desenvolverse con 
+                    la programación y pueda dar solución a cualquier problema que se le presente utilizando como 
+                    herramienta la programación. Además, el estudiante estará en la capacidad de utilizar la lógica para 
+                    una vez conocidos los conceptos, implementar algoritmos de cualquier complejidad.
+                </p>
+            </div>
+        </div>
+        <hr/><br>
+        <div class="row mx-auto">
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>1. Variables</h2>
+                <div class="mx-auto text-center" style="width:350px;">
+                    <img src="{% static 'Im/variables.png' %}" style="width: 100%;"/>
+                </div>
+                <br>
+                <p class="text-justify">
+                    Se explicará qué son las variables, cuales son sus funciones y la importancia que estas tienen 
+                    en la programación. Se verán sus diferentes tipos y cómo pueden ser utilizadas a lo largo de 
+                    los códigos.
+                </p>
+                <a href="{% url 'variables_app:variables' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>2. Operadores</h2>
+                <div class="mx-auto" style="width:300px">
+                    <img src="{% static 'Im/operadores.png' %}" style="width:90%"/>
+                </div>
+                <p class="text-justify">
+                    Se van a mostrar los operadores y sus usos, la importancia que estos tienen y, como en las 
+                    matemáticas, estos son de vital importancia a la hora de resolver problemas, ya que permiten 
+                    la manipulación de la información y los datos.
+                </p>
+                <a href="{% url 'operadores_app:operadores' %}" class="button">Empezar</a>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>3. Condicionales</h2>
+                <div class="mx-auto" style="width:300px">
+                    <img src="{% static 'Im/condiciones.png' %}" style="width:100%"/>
+                </div>
+                <br>
+                <p class="text-justify">
+                    En los condicionales se va a mostrar la forma en la que estos se deben implementar como 
+                    estructura para hacer que un código tenga una mayor complejidad y por ende, un mejor manejo de 
+                    su flujo de ejecución.
+                </p>
+                <a href="{% url 'condicionales_app:condicionales' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>4. Ciclos</h2>
+                <div class="mx-auto" style="width:300px">
+                    <img src="{% static 'Im/ciclos.png' %}" style="width:80%;"/>
+                </div>
+                <p class="text-justify">
+                    En los ciclos se va a explicar su estructura y sintaxis, además, la importancia  y ventajas 
+                    que este brinda debido a el uso que se le puede dar para repetir un número determido de veces 
+                    cualquier acción u operación que se desee realizar.
+                </p>
+                <a href="{% url 'ciclos_app:ciclos' %}" class="button">Empezar</a>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>5. Arreglos</h2>
+                <br>
+                <div class="mx-auto" style="width:400px">
+                    <img src="{% static 'Im/arreglos.png' %}"/>
+                </div>
+                <br><br>
+                <p class="text-justify">
+                    En este módulo se va a definir qué es un arreglo, su uso, importancia y las manera de 
+                    implementarlos en un programa para que este sea de gran utilidad, además, la forma en que se 
+                    recorren y cómo pueden ser vistos dependiendo de la necesidad.
+                </p>
+                <a href="{% url 'arreglos_app:arreglos' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>6. Matrices</h2>
+                <div class="mx-auto" style="width:400px;">
+                    <img src="{% static 'Im/matrices.png' %}" style="width: 100%;"/>
+                </div>
+                <p class="text-justify">
+                    En este módulo, al igual que en los arreglos, se va a dar la definición de matrices, su uso, 
+                    importancia y la manera en que se debe de usar dentro de un algoritmo para que esta sea una 
+                    gran herramienta.
+                </p>
+                <a href="{% url 'matrices_app:matrices' %}" class="button">Empezar</a>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>7. Funciones</h2>
+                <div class="mx-auto" style="width:300px;">
+                    <img src="{% static 'Im/funciones.png' %}" style="width: 90%;"/>
+                </div>
+                <p class="text-justify">
+                    Aquí se van a explicar qué son las funciones, para qué se usan, cómo se usan y cómo no, su 
+                    sintaxis. Además, se mostrarán algunos ejemplos fáciles con los que se entenderá de mejor 
+                    manera el gran potencial de esta herramienta.
+                </p>
+                <a href="{% url 'funciones_app:funciones' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>8. Clases</h2>
+                <br>
+                <div class="mx-auto" style="width:300px;">
+                    <img src="{% static 'Im/clases.png' %}" style="width: 100%;"/>
+                </div>
+                <br><br>
+                <p class="text-justify">
+                    En esta sección, aunque no es muy usado en Arduino, se explican qué son las clases, para qué 
+                    sirven y cómo se pueden visualizar y utilizar en un programa. Además, se muestran ejemplos de 
+                    cómo se utilizan.
+                </p>
+                <a href="{% url 'clases_app:clases' %}" class="button">Empezar</a>
+            </div> 
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>9. Variables como pines</h2>
+                <div class="mx-auto" style="width:400px">
+                    <img src="{% static 'Im/vcp.png' %}" style="width: 100%;"/>
+                </div>
+                <br>
+                <p class="text-justify">
+                    Este módulo es muy importante debido a que en este caso, en las variables ya se almecenan 
+                    datos, pero datos provenientes de pines que tiene el sistema embebido de Arduino, aquí se 
+                    explica a fondo cómo se usan y qué se hace con ellas.
+                </p>
+                <a href="{% url 'vcp_app:vcp' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>10. Pines análogos</h2>
+                <div class="mx-auto" style="width:300px">
+                    <img src="{% static 'Im/pinesanalogos.png' %}" style="width: 90%;"/>
+                </div>
+                <p class="text-justify">
+                    Es de vital importancia entender cómo se comporta Arduino a nivel de hardware, por esa razón, 
+                    aquí se explicará qué es un pin análogo, cómo funciona y para qué se usa en la programación 
+                    con Arduino dirigida al hardware.
+                </p>
+                <a href="{% url 'pines_analogos_app:pines_analogos' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>11. Pines digitales</h2>
+                <div class="mx-auto" style="width:400px">
+                    <br>
+                    <img src="{% static 'Im/pinesdigitales.png' %}" style="width: 100%;"/>
+                </div>
+                <br>
+                <p class="text-justify">
+                    Es muy importante entender cómo se comporta Arduino a nivel de hardware, por esta razón, en 
+                    este módulo se explicará qué es un pin digital, cómo funciona y para qué se usa en la 
+                    programación con Arduino dirigida al hardware.
+                    <p>
+                </p>
+                <a href="{% url 'pines_digitales_app:pines_digitales' %}" class="button">Empezar</a>
+            </div>
+            <div class="col-md-5 mb-md-5" id="mod">
+                <h2>12. PWM</h2>
+                <div class="mx-auto" style="width:160px">
+                    <img src="{% static 'Im/pwm.png' %}" style="width: 80%;"/>
+                </div>
+                <p class="text-justify">
+                    Aquí se endentenderá mejor el concepto de PWM, se explicará un poco de qué se trata, para qué 
+                    sirve y cómo se aplica en la programación con Arduino. Además, se mostrará a grandes rasgos su 
+                    uso y la aplicabilidad que este tiene en los programas.
+                </p>
+                <a href="{% url 'pwm_app:pwm' %}" class="button">Empezar</a>
+            </div>
+        </div>
+	</div>
+</div>
+<div id="header-wrapper">
+	<div id="banner" class="container">
+		<div class="row mx-auto">
+            <div class="col-md-5 p-1" style="margin-left: 10px;">
+                <h2>¿Qué se va a aprender?</h2>
+                <br>
+                <p class="text-justify">
+                    Como ya se mencionó, el software se compone de dos partes principales en las que se encuentran una 
+                    parte teórica y otra práctica. En la teoría se aprenderá sobre todos los conceptos y aspectos más 
+                    importantes de la programación y más precisamente, en el lenguaje que se va a estudiar, además, se 
+                    aprenderá todo lo relacionado con las estructuras que componen este lenguaje y su sintaxis. En la 
+                    práctica se realizarán 4 proyectos con los cuales se mostrará el uso de todas las estructuras 
+                    aprendidas en la teoría y cómo, al unir todas estas, se puede dar solución a cualquier tipo de 
+                    problema utilizando este lenguaje. También, a medida de que se desarrolla cada proyecto, se va 
+                    explicando la forma en la que este se diseñó para que el alumno tenga más claridad y esté en la 
+                    capacidad de implementar cualquier programa que le brinde una solución.
+                </p>
+            </div>
+            <div class="col-md-5 p-1" style="margin-left: 150px;">
+                <h2>Lenguaje Arduino</h2>
+                <br>
+                <p class="text-justify">
+                    Es importante saber acerca del lenguaje de programación en el que se va a trabajar, el cual se denomina 
+                    Arduino. En esta sección se va a aprender sobre cuales son sus usos y características, además, acerca 
+                    de qué lo hace importante a la hora de aprender a programar. Arduino es un lenguaje de programación el 
+                    cuál tiene como propósito la codificación tanto de software, como de hardware, es decir, Arduino aparte 
+                    de tener un entorno de desarrollo, posee sus propios dispositivos electrónicos los cuales brindan una 
+                    mayor interacción con el entorno físico, lo que hace que tenga grandes ventajas frente a otros 
+                    lenguajes, pues una vez atrapados los datos, estos pueden ser procesados a través de su software. Este 
+                    lenguaje permite todo tipo de estructuras, tiene gran variedad de librerías que contienen funciones 
+                    las cuales se conectan a los periféricos y hacen que la interacción sea mucho más simple.
+                </p>
+            </div>
+        </div>		
+	</div>
+</div>
+<div id="page-wrapper">
+	<div id="featured" class="container">
+		<div class="title">
+            <h2>Proyectos</h2>
+            <hr/><br>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-md-12">
+                <p>
+                    En la sección de proyectos se tendrán 4 los cuales poseen diferente nivel de complejidad, ya que de 
+                    esta manera se puede mostrar todo lo que se logra realizar con Arduino y, cómo se puede solucionar 
+                    cualquier problema tanto de software, como a nivel físico y de hardware. Los proyectos se componen de 
+                    una parte de código, un poco de interacción para ejecutar y una explicación, ya que con esta se 
+                    pretende hacer que el estudiante sepa y comprenda cómo funciona el código y para qué se implementó 
+                    dicho algoritmo.
+                </p>
+            </div>
+        </div>
+        <hr/><br>
+		<div class="tbox1">
+			<div class="padding-bottom" id="mod1">
+				<h2>Proyecto #1</h2>
+				<div class="mx-auto" style="widows: 450px">
+                    <img src="{% static 'Im/monitor.png'%}" style="width:87%;"/>
+                </div>
+                <br>
+				<p class="text-justify">
+                    Como primer proyecto se desea mostrar en el monitor serial información que contiene el programa de 
+                    algunos parámetros que se han almacenado de un sistema que controla un riego automático. Por ende, lo 
+                    que se pide es desarrollar un algoritmo que muestre dichos datos para que el usuario pueda observarlos 
+                    y tomar decisines.
+                </p>
+				<a href="{% url 'proyecto1_app:proyecto1' %}" class="button">Empezar</a>
+			</div>
+			<div id="mod1">
+                <h2>Proyecto #3</h2>
+                <br>
+				<div class="mx-auto" style="widows: 450px">
+                    <img src="{% static 'Im/alarma.png'%}" style="width:100%;"/>
+                </div>
+                <br>
+				<p class="text-justify">
+                    Para el tercer proyecto se desea a través un pin análogo leer la tempertura en una caldera y una vez 
+                    pase el límite definido de temperatura, este deberá de encender un led y una bocina para avisar a las 
+                    personas que apaguen la caldera. Por ende, el estudiante debe desarrollar un programa que cumpla dicho 
+                    objetivo.
+				</p>
+				<a href="{% url 'proyecto3_app:proyecto3' %}" class="button">Empezar</a>
+			</div>
+		</div>
+		<div class="tbox2">
+			<div class="padding-bottom" id="mod1">
+				<h2>Proyecto #2</h2>
+				<div class="mx-auto" style="widows: 300px">
+                    <img src="{% static 'Im/arduinoyled.png'%}" style="width:85%;"/>
+                </div>
+                <br>
+				<p class="text-justify">
+                    Como segundo proyecto se tiene la implementación de un código que permita indicar cuántas veces se 
+                    desea encender y apagar un led. La idea es que el alumno a través de los conceptos adquiridos logre 
+                    implementar el código pertinente para cumplir con el objetivo propuesto y que este logre la 
+                    funcionalidad que se pide.
+				</p>
+				<a href="{% url 'proyecto2_app:proyecto2' %}" class="button">Empezar</a>
+			</div>
+			<div id="mod1">
+				<h2>Proyecto #4</h2>
+				<div class="mx-auto" style="widows: 300px">
+                    <img src="{% static 'Im/motores.png'%}" style="width:72%;"/>
+                </div>
+                <br>
+				<p class="text-justify">
+                    Como cuarto y último proyecto, se solicita un programa que lea la altura a la que se encuentra una 
+                    compuerta y que dependiendo de esto se active o desactive un motor el cual la abre y la cierra. Se 
+                    pide que el estudiante implemente un código el cual controle la compuerta y que esto se haga de manera 
+                    automática.
+				</p>
+				<a href="{% url 'proyecto4_app:proyecto4' %}" class="button">Empezar</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

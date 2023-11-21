@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/condicionales#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #3</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p class="text-justify">
+                    En un parque de diversiones se desea implementar un programa que le permita al operador determinar si 
+                    una persona es apta para poder entrar a una atracción. Para saber si una persona es apta, se debe tomar 
+                    en cuenta la edad y la estatura, si su edad esta en un rango de 13 a 60 años y su estatura es mayor a 
+                    160 centímetros, el usuario podrá ingresar a la atracción, sino es así el programa se detiene.<br><br>
+                    <strong>NOTA:</strong> La edad se debe recibir sin el punto, es decir si mide 1.70m lo recibe como 170cm.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int edad;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int estatura;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>void setup(){</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>    Serial.begin(9600);</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>}</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>void loop(){</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>    Serial.print("Ingrese la edad");</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>    edad = Serial.read();</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>    Serial.print("Ingrese la estatura");</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>    estatura = Serial.read();</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>    if(estatura>=160 && edad>=13 || edad<=60){</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>        Serial.print("El usuario puede ingresar a la atracción.");</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>    }</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>    else if(estatura < 160 || edad < 13 || edad > 60){</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>        if(estatura < 160 && edad < 13 || edad > 60){</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>            Serial.print("Estatura y edad no cumplen.");</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>        }</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>        else if(edad < 13 || edad > 60){</span>
+<span id="19"><span class="pr-n mr-3" style="color: blue;">19</span>            Serial.print("Edad no cumplen.");</span>
+<span id="20"><span class="pr-n mr-3" style="color: blue;">20</span>        }</span>
+<span id="21"><span class="pr-n mr-3" style="color: blue;">21</span>        else if(estatura < 160){</span>
+<span id="22"><span class="pr-n mr-3" style="color: blue;">22</span>            Serial.print("Estatura no cumplen.");</span>
+<span id="23"><span class="pr-n mr-3" style="color: blue;">23</span>        }</span>
+<span id="24"><span class="pr-n mr-3" style="color: blue;">24</span>    }</span>
+<span id="25"><span class="pr-n mr-3" style="color: blue;">25</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese la edad">
+            </div>
+            <div class="form-group desactivate" id="contval1">
+                <input type="text" clase="form-control" id="val1" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese la estatura">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero en la cual se va a almacenar la edad ingresada por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero en la cual se va a almacenar la estatura ingresada por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se imprime un mensaje en el que se pide la edad al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se guarda el valor ingresado por teclado en la variable correspondiente a la edad.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se imprime un mensaje en el que se pide la estatura al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se guarda el valor ingresado por teclado en la variable correspondiente a la estatura.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se comprueba si se cumplen las condiciones dadas en el problema a tarvés de una estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>De cumplirse la condición anterior, se imprime un mensaje que confirme que el usuario puede ingresar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Se cierra la estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se verifica si alguna de las condiones no se cumplen utilizando en este caso la estructura else if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>De cumplirse la condición anterior, se comprueba si ninguna condición se cumple utilizando una estructura if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">16</span>Nuevamente, si se cumple la condición, se imprime un mensaje en el que diga que ninguna condición se cumple y por ende el usuario no puede ingresar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">17</span>Se cierra la estructura if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">18</span>Ahora, se verifica si una de las condiciones no se cumple utilizando la estructura else if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">19</span>De cumplirse la condición anterior, se imprime un mensaje diciendo que no se cumple dicha condición.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">20</span>Se cierra la estructura else if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">21</span>Luego, se verifica si la otra condición no se cumple utilizando la estructura else if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">22</span>De cumplirse la condición anterior, se imprime un mensaje diciendo que no se cumple dicha condición.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">23</span>Se cierra la estructura else if anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">24</span>Se cierra la estructura else if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">25</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 2,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+        if(!isNaN(valor_entrada)){
+            cont++
+            valores.push(valor_entrada)
+            mensaje = ''
+            if(valores[1]>=160 && valores[0]>=13 && valores[0]<=60){
+                mensaje = 'El usuario puede ingresar a la atracción.'
+            }
+            else if(valores[1]<160 && valores[0]<13 || valores[0]>60){
+                mensaje = 'Estatura y edad no cumplen.'
+            }
+            else if(valores[1]<160){
+                if(valores[0]>=13 || valores[0]<=60){
+                    mensaje = 'Estatura no cumple.'
+                }
+            }
+            else if(valores[1]>=160){
+                if(valores[0]<13 || valores[0]>60){
+                    mensaje = 'Edad no cumple.'
+                }
+            }
+            
+            if(cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = mensaje
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            }else{
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+</script>
+{% endblock scripts %}

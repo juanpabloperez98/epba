@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/ciclos#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #6</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Realizar un programa que pida al usuario enteros dentro de un ciclo while, el ciclo se cerrará cuando 
+                    la suma de estos enteros sean igual o mayor a 50.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int numero = 0;</span>
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int n = 0;</span>                    
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>void setup(){</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>    Serial.begin(9600);</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>}</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>void loop(){</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>    while(numero<=50){</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>        Serial.print("Ingrese un número: ");</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>        n = Serial.read();</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>        numero = numero+n;</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>        Serial.print("El número está en: ");</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>        Serial.print(numero);</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>    }</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese un número">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero la cual va a almacenar el valor de la suma de los números.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero la cual va a almacenar el valor de n.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se abre el ciclo while el cuál va a funcionar siempre y cuando la suma de los números sea menor o igual a 50.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se imprime un mensaje informativo, el cual pide al usuario ingresar un número.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se lee el puerto serial para almacenar el valor ingresado por teclado en la variable correspondiente al número.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Ahora se realiza la sumatoria del número actual con el número ingresado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se imprime un mensaje informativo, el cual acompaña el resultado de la suma actual.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Se imprime el valor de la suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Se cierra la estructura while.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 1,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var valor_entrada = parseInt(document.getElementById('val0').value),
+            mensaje = '',
+            suma = 0
+
+
+        if (!isNaN(valor_entrada)) {
+            valores.push(valor_entrada)
+            for(let i=0; i<valores.length; i++){
+                    suma += valores[i]
+            }
+            mensaje = 'El número está en: ' + suma
+            if(suma<=50){
+                document.getElementById('val0').value = ''
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = mensaje
+            }else{
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('resultado').innerHTML = mensaje
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

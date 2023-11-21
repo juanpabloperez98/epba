@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/proyecto.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<div class="row mx-auto content" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Proyecto #2</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto content " id="explain">
+    <div class="col-md-10" id="exp1">
+        <h2>Objetivo</h2>
+        <hr/><br>
+        <p class="text-justify">
+            Se desea implementar un algoritmo que permita que el usuario ingrese el número de veces que se enciende y apague
+            un led, esto con el fin de ayudar al usuario a llevar un conteo de tiempo con un apoyo visual, ya que el led se 
+            enciende y se apaga cada medio segundo. Dependiendo del tiempo que el usuario necesite contabilizar debe ingresar
+            un número determinado de veces para que el led se encienda y apague. Para ello se debe poner en práctica todos los 
+            conceptos vistos en la teoría y de esta manera, lograr la implementación para dar solución al problema presentado. 
+            Para el desarrollo e implementación de este ya se debió a ver visto la parte teórica de la página en donde se 
+            encuentran todos los conceptos que se utilizan para la implementación del algoritmo que da solución a este 
+            problema.
+        </p>
+        <h4 class="text-justify">Cosas para tener en cuenta: </h4>
+        <p class="text-justify"> 
+            Siempre que en una variable se almacene un pin del Arduino, se debe especificar al programa si este pin va a 
+            funcionar como entrada o salida, ya que dependiendo de esto dicho pin va a funcionar de diferentes maneras y 
+            también va a configurarse diferente. Para esto, Arduino tiene una función llamada pinMode() la cual permite 
+            declarar si es de entrada o salida. Además, a dicha variable que almacena un pin se le puede dar un estado 
+            bajo o un estado alto, es decir, se puede encender o apagar lo que este conectado a ella en caso de que esté
+            funcionando como salida, para esto se utiliza el comando digitalWrite(). Pero si está funcionando como entrada, 
+            de igual manera se pueden leer estado bajo y alto o, 0 y 1 y para esto, se utiliza la función digitalRead().
+        </p>
+        <br>
+        <button href="#" id="empezar" class="button">Empezar proyecto</button>
+        <br><br>
+    </div>
+</div>
+<div class="row mx-auto content desactivate" id="desarrollo">
+    <div class="mx-auto col-md-5 mod1">
+        <h3 class="text-center">Solución</h3>
+        <pre id="code">
+            <code class="language-c++">
+<span style="color: blue;"> 1 </span><span>int led = 13;</span>
+<span style="color: blue;"> 2 </span><span id="cont-higlight1" class="line-higlight"><span id="linea-higlight1"> </span><span id="linea-1" class="desactivate">int veces = 0;</span></span>
+<span style="color: blue;"> 3 </span><span>void setup(){</span>
+<span style="color: blue;"> 4 </span><span> Serial.begin(9600);</span>
+<span style="color: blue;"> 5 </span><span id="cont-higlight2" class="line-higlight"><span id="linea-higlight2"> </span><span id="linea-2" class="desactivate"> pinMode(led, OUTPUT);</span></span>
+<span style="color: blue;"> 6 </span><span>}</span>
+<span style="color: blue;"> 7 </span><span>void loop(){</span>
+<span style="color: blue;"> 8 </span><span> veces = Serial.read();</span>
+<span style="color: blue;"> 9 </span><span id="cont-higlight3" class="line-higlight"><span id="linea-higlight3"> </span><span id="linea-3" class="desactivate"> for(int i=veces; i>=0; i--){</span></span>
+<span style="color: blue;">10 </span><span>  digitalWrite(led, HIGH);</span>
+<span style="color: blue;">11 </span><span>  delay(500);</span>
+<span style="color: blue;">12 </span><span>  digitalWrite(led, LOW);</span>
+<span style="color: blue;">13 </span><span>  delay(500);</span>
+<span style="color: blue;">14 </span><span> }</span>
+<span style="color: blue;">15 </span><span id="cont-higlight4" class="line-higlight"><span id="linea-higlight4"> </span><span id="linea-4" class="desactivate"> Serial.print("Ha finalizado.");</span></span>
+<span style="color: blue;">16 </span><span>}</span>
+            </code>
+        </pre>
+        <div class="text-center desactivate" id="explain-code">
+            <button href="#" id="code-explain" class="button">Explicar código</button>
+        </div>
+    </div>
+    <div class="mx-auto col-md-5 desactivate mod1" id="explicacion">
+        <h3 class="text-center">Explicación</h3>
+        <pre>
+            <code class="language-c++">
+<span style="color: blue;"> 1 </span><span>Se declara el pin 13 del Arduino en donde está conectado el led como variable.</span>
+<span style="color: blue;"> 2 </span><span>También se declara una variable en la cual se va a guardar el número de veces que se enciende y apaga el led.</span>
+<span style="color: blue;"> 3 </span><span>Se abre la función principal de configuración que tiene Arduino por defecto.</span>
+<span style="color: blue;"> 4 </span><span>Luego, se inicia la comunicación serial a una velocidad de 9600 baudios.</span>
+<span style="color: blue;"> 5 </span><span>La variable en la que se almacenó el pin donde está conectado el led se define como salida.</span>
+<span style="color: blue;"> 6 </span><span>Se cierra la función de configuración.</span>
+<span style="color: blue;"> 7 </span><span>Se abre la función principal de ciclo infinito en la cual se pone el código que se desea ejecutar.</span>
+<span style="color: blue;"> 8 </span><span>Se lee lo que se ingresa por teclado y se guarda en la variable correspondiente.</span>
+<span style="color: blue;"> 9 </span><span>Se inicia un ciclo for que empieza en el número de veces ingresado y termina en 0.</span>
+<span style="color: blue;">10 </span><span>Luego se prende el led, poniendo la variable donde se almacena este pin en un estado alto.</span>
+<span style="color: blue;">11 </span><span>Ahora se pone una espera de 500 milisegundos para lograr ver que el led se enciende.</span>
+<span style="color: blue;">12 </span><span>Luego se apaga el led, poniendo la variable donde se almacena este pin en un estado bajo.</span>
+<span style="color: blue;">13 </span><span>Ahora se pone una espera de 500 milisegundos para lograr ver que el led se apaga.</span>
+<span style="color: blue;">14 </span><span>Para finalizar este ciclo, basta con cerrarlo.</span>
+<span style="color: blue;">15 </span><span>Se imprime un mensaje en el monitor serial que indica que el programa finalizó.</span>
+<span style="color: blue;">16 </span><span>Por último, se cierra la función de ciclo infinito.</span>
+            </code>
+        </pre>
+        <div class="text-md-center">
+            <button href="#" class="button" id="reiniciar">Reiniciar</button>
+        </div>
+    </div>
+
+
+    <div class="mx-auto col-md-5 mod1 text-center" id="form">
+        <h2 id="linea">Linea #</h2>
+        <br>
+        <p id="explain_code" class="text-center"></p>
+        <br>
+        <form id="formulario" class="" action="">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select1" value="1" checked>
+                <label class="form-check-label" for="select1" id="label1">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select2" value="2">
+                <label class="form-check-label" for="select2" id="label2">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select3" value="3">
+                <label class="form-check-label" for="select3" id="label3">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select4" value="4">
+                <label class="form-check-label" for="select4" id="label4">
+                </label>
+            </div>
+            <br><br>
+            <button type="submit" class="button">Probar</button>
+        </form>
+    </div>
+
+    <div class="desactivate mx-auto col-md-5 mod1 text-center" id="felicitacion">
+        <h2>Felicitaciones</h2>
+        <br>
+        <p id="congratulation"></p>
+        <br>
+        <div id="siguiente_botones">
+            <button href="#" class="button" id="sig_">Siguiente</button>
+        </div>
+    </div>
+</div>
+<div class="row mx-auto content desactivate" id="finish">
+    <div class="mx-auto col-md-5">
+        
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    var cont = 1,
+        num_total = 4
+
+    var lineas = {
+        '1': {
+            'line_code':2,
+            'correct_line':2,
+            'congratulation':'Para declarar una variable se debe poner el tipo de dato, en este caso int, se debe colocar su nombre y se debe de inicializar en cero para que esta no tome valores basura. Siempre recordar que se debe finalizar con un punto y coma.',
+            'explaincode':'Falta declarar la variable en la cual se va a almacenar el número de veces que se va a encender y apagar el led, ¿Qué línea de código viene aquí?',
+            'values':['int veces = 0','int veces = 0;','int veces;','int veces']
+        },
+        '2': {
+            'line_code':5,
+            'correct_line':3,
+            'congratulation':'Es necesario especificarle al programa si una variable que almacena un pin es una entrada o una salida. De igual manera se debe recordar finalizar siempre con punto y coma.',
+            'explaincode':'Se debe especificar al programa si el led es una salida o una entrada, ¿Qué línea de código se debe de poner aquí?',
+            'values':['pinMode(OUTPUT);','pinMode(led);','pinMode(led, OUTPUT);','pinMode(led, OUTPUT)']
+        },
+        '3': {
+            'line_code':9,
+            'correct_line':4,
+            'congratulation':'Para iniciar un ciclo, se debe especificar qué ciclo es y, para el caso del for, se deben poner los tres parámetros que son: desde dónde inicia, hasta dónde va y en pasos de cuánto, todo esto dentro del paréntesis. Posteriormente se deben abrir las llaves en donde irá todo el código que se repite.',
+            'explaincode':'Se debe iniciar un ciclo el cual permita encender y apagar un led el número de veces especificado por el usuario, ¿Qué línea de código viene aquí?',
+            'values':['for(int i=veces, i>=0, i--){','for(int i; i>=0; i--){','for(int i=veces; i>=0; i--)','for(int i=veces; i>=0; i--){']
+        },
+        '4': {
+            'line_code':14,
+            'correct_line':1,
+            'congratulation':'Siempre es importante tener buena interacción y comunicación con el usuario, por lo que se debe poner un mensaje que le indique al usuario que el programa finalizó.',
+            'explaincode':'Por último, es necesario poner un mensaje para que el usuario sepa que el programa finalizó, ¿Qué línea de código viene aquí?',
+            'values':['Serial.print("Ha finalizado.");','print("Ha finalizado.");','Serial.print(Ha finalizado.);','Serial.print("Ha finalizado.")']
+        }
+    }
+
+    var addLinesInitial = () => {
+        $('#linea').text('Linea #' + lineas[cont].line_code)
+        $('#explain_code').text(lineas[cont].explaincode)
+        for (let i = 0; i < 4; i++) {
+            var identificador = '#label'+ (i+1)
+            const element = lineas[cont].values[i]
+            $(identificador).text(element)
+        }
+    }
+
+    $('#empezar').on('click', (e) => {
+        e.preventDefault() //Para que al dar click no se recargue la pagina
+        $('#explain').addClass('desactivate')
+        $('#desarrollo').removeClass('desactivate')
+        addLinesInitial()
+    })
+
+    $('#formulario').submit((e) =>  {
+        e.preventDefault()
+        var line = $('input[name="select"]:checked').val(),
+            line_higlight = '#linea-higlight'+cont,
+            line_activate = '#linea-'+cont,
+            cont_higlight = '#cont-higlight'+cont
+
+        if(lineas[cont].correct_line == parseInt(line)){
+            $(line_higlight).toggle('')
+            $(line_activate).toggle('')
+            $('#formulario')[0].reset()
+            cont++
+            if(cont <= num_total){
+                addLinesInitial()
+                $(cont_higlight).removeClass('line-higlight')
+                $('#congratulation').text(lineas[cont-1].congratulation)
+            }else{
+                $(cont_higlight).removeClass('line-higlight')
+                // $('#form').toggle('')
+                $('#explain-code').toggle('')
+                $('#siguiente_botones').toggle('')
+                $('#congratulation').text(lineas[cont-1].congratulation)
+            }
+            $('#felicitacion').toggle('')
+            $('#form').toggle('')
+        }else{
+            alert("¿Estas seguro?... revisa bien")
+        }
+    })
+
+    $('#sig_').on('click', (e) => {
+        e.preventDefault()
+        $('#form').toggle('')
+        $('#felicitacion').toggle('')
+    })
+
+    $('#code-explain').on('click', (e) => {
+        e.preventDefault()
+        $('#explain-code').toggle('')
+        $('#explicacion').toggle('')
+        $('#felicitacion').toggle('')
+    })
+
+    $('#reiniciar').on('click', (e) => {
+        e.preventDefault()
+        location.reload()
+    })
+</script>
+{% endblock scripts %}

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/ciclos#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #1</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Implemente un algoritmo que pida dos valores, uno en donde inicia y otro donde termina, se imprimir la 
+                    suma total de los valores comprendidos entre el valor inicial y el valor final. Se debe verificar que 
+                    el valor inicial sea menor que el valor final.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int inicial;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int fin;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>int suma = 0;</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>void setup(){</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>    Serial.begin(9600);</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>}</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>void loop(){</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>    Serial.print("Ingrese el valor de inicio: ");</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>    inicial = Serial.read();</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>    Serial.print("Ingrese el valor del final: ");</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>    fin = Serial.read();</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>    if(inicial < fin){</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>        for(int i=inicial; i<=fin; i++){</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>            suma = suma+i;</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>        }</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>        Serial.print("La suma es: ");</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>        Serial.println(suma);</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>    }else{</span>
+<span id="19"><span class="pr-n mr-3" style="color: blue;">19</span>        Serial.println("El valor inicial no es menor que el final.");</span>
+<span id="20"><span class="pr-n mr-3" style="color: blue;">20</span>    }</span>
+<span id="21"><span class="pr-n mr-3" style="color: blue;">21</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese el valor de inicio">
+            </div>
+            <div class="form-group desactivate" id="contval1">
+                <input type="text" clase="form-control" id="val1" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese el valor del final">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero la cual va a almacenar el valor inicial ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero la cual va a almacenar el valor final ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se declara la variable de tipo entero la cual va a almacenar la suma de todos los número comprendidos entre los valores anteriores.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se imprime un mensaje informativo, el cual pide al usuario ingresar el valor inicial.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se lee el puerto serial para almacenar el valor ingresado por teclado en la variable del valor inicial.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se imprime un mensaje informativo, el cual pide al usuario ingresar el valor final.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se lee el puerto serial para almacenar el valor ingresado por teclado en la variable del valor final.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Se comprueba si el valor inicial es menor que el valor final utilizando una estructura de condición if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>De cumplirse lo anterior, se inicial el ciclo for en donde el contador va a empezar en el valor inicial, va a terminar en el valor final y va a ir en pasos de a 1.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Ahora, se hace la suma de los valores, poniendo una sumatoria que sume la variable anterior con el contador.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>Se cierra el ciclo for.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">16</span>Luego, se imprime un mensaje informativo el cual acompaña el valor de la suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">17</span>Se imprime el valor de la suma.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">18</span>Posteriormente, se cierra la estructura if y se abre la estructura que se ejecuta por defecto, es decir, la estructura else.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">19</span>Nuevamente, en este caso se imprime un mensaje que informa al usuario que el valor inicial no es menor que el valor final.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">20</span>Por último, se cierra la estructura else.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">21</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 2,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+
+        if (!isNaN(valor_entrada)) {
+            cont++
+            valores.push(valor_entrada)
+            //Código
+            inicial = valores[0]
+            final = valores[1]
+            suma = 0
+            mensaje = ''
+            if(inicial<final){
+                for(i=inicial; i<=final; i++){
+                    suma = suma+i
+                }
+                mensaje = 'La suma es: ' + suma
+            }else{
+                mensaje = 'El valor inicial no es menor que el final.'
+            }
+
+            if (cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = mensaje
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            } else {
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

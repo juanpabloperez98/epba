@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Variables</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Las variables son espacios que se guardan en memoria y a los cuales se les asigna un nombre 
+            específico en el programa, llamado identificador, con el fin de utilizarlo a lo largo de este. Para 
+            declarar una variable se le debe de asignar un tipo de dato, ya que de esta manera se logra 
+            diferenciar si se trata de un número, una cadena de texto, una letra, entre otros. Por otra parte,
+            estos "contenedores" pueden almacenar datos los cuales pueden ser modificados a lo largo del 
+            programa.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+            <img src="{% static 'Im/variables.png' %}" style="width:100%;"/> 
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para declarar variables se deben tener en cuenta tres cosas. Primero se debe poner el tipo de dato
+            el cual va a almacenar la variable, luego se debe poner el nombre que va a tener dicha variable, este 
+            nombre comúnmente coincide con el dato el cual va a almacenar esta, pues de esta manera se facilita 
+            su uso; por último, aunque no se hace necesario, se le puede asignar un valor inicial a la variable, 
+            solo debe poner el signo de igual y posteriormente darle el valor que se desee, finalizando con un 
+            punto y coma.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+tipo_de_dato nombre_variable = valor;
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Tipos de datos</h2>
+        <hr/>
+        <p class="text-justify">
+            Dentro de los tipos de datos que existen en Arduino para las variables se encuentran los números,
+            las letras, las cadenas de texto, los booleanos y entre otros. Dentro de los números se encuentran 
+            los enteros, los flotantes y binarios. A continuación se explica un poco de cada tipo para tener 
+            en cuenta cuál es el que se desea y se necesita utilizar para cada uno de los programas, además, se
+            mostrará su sintaxis dentro del lenguaje.
+        </p>
+        <br>
+        <h5 class="text-justify">Enteros: </h5>
+        <p class="text-justify">
+            Los números enteros son aquellos que contienen a todos los números que hay en la recta real antes y después 
+            del cero, sin tener en cuenta los infinitos puntos que hay entre un número y el otro, además, son aquellos 
+            que no poseen decimales o fracción, es decir, son exactos. Para declarar una variable con este tipo de dato, 
+            se debe poner la palabra "<span style="color: rgb(200, 147, 0);">int</span>" seguida del nombre de la 
+            variable y por último, si se quiere, asignarle un valor a dicha variable. 
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+int nombre_variable = valor;
+            </code>
+            </pre>
+        </div>
+        <h5 class="text-justify">Flotantes o doubles: </h5>
+        <p class="text-justify">
+            Los números flotantes son aquellos que contienen los infinitos números que hay en la recta real antes y después 
+            del cero, además, son aquellos que poseen decimales o fracción, es decir, no son exactos y tienen números 
+            después del punto o de la coma. Para declarar una variable con este tipo de dato, se debe poner la palabra 
+            "<span style="color: rgb(200, 147, 0);">float</span>" seguida del nombre de la variable y nuevamente, por 
+            último, si es necesario, asignarle un valor a la variable. Por otra parte, se encuentran los doubles que se 
+            definen teóricamente igual que el float, su diferencia es que este tipo de dato tiene más bits de almacenamiento, 
+            por lo que pueden ser muchos más los número que pueden guardarse después de la coma o el punto. Para declarar 
+            o nombrar este tipo de dato se debe poner la palabra "<span style="color: rgb(200, 147, 0);">double</span>".
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+float nombre_variable = valor;
+            </code>
+            </pre>
+        </div>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+double nombre_variable = valor;
+            </code>
+            </pre>
+        </div>
+        <h5 class="text-justify">Booleanos: </h5>
+        <p class="text-justify">
+            Los números booleanos son aquellos que contienen valores binarios, es decir, solo tienen dos posibilidades: 
+            falso o verdadero, alto o bajo o, 0 o 1. Estos valores usualmente se obtienen como resultado de expresiones 
+            lógicas que al ser evaluada, arrojan como resultado alguno de estos valores. Para declarar un dato de este
+            tipo se debe poner la palabra "<span style="color: rgb(200, 147, 0);">bool</span>" seguida del nombre de 
+            la variable y para finalizar, de ser necesario, el valor que se le va a asignar a dicha variable.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+bool nombre_variable = valor;
+            </code>
+            </pre>
+        </div>
+        <h5 class="text-justify">Letras: </h5>
+        <p class="text-justify">
+            Las letras son un tipo de dato en el que se puede almacenar, como su nombre lo indica, cualquier letra del 
+            alfabeto, sin importar si es mayúscula o minúscula, pero solo se puede almacenar una sola letra a la vez. Para 
+            declarar una variable con este tipo de dato, se debe poner la palabra "<span style="color: rgb(200, 147, 0);">char</span>" 
+            seguida del nombre de la variable y para finalizar, de ser necesario, el valor que se le va a asignar
+            a dicha variable.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+char nombre_variable = "letra";
+            </code>
+            </pre>
+        </div>
+        <p class="text-justify">
+            Para dar solución al hecho de que solo se pueden guardar letras y no palabras, existe una variación en la cual 
+            se pueden guardar palabras o frases completas y para esto se declara como vector. Para declarar un vector con 
+            este tipo de dato, se debe poner la palabra "<span style="color: rgb(200, 147, 0);">char</span>" seguida 
+            del nombre del vector y de igual manera, si se desea, se puede asignar una palabra o frase inicial a este 
+            vector.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+char[tamaño] nombre_vector = "palabra";
+            </code>
+            </pre>
+        </div>
+        <br>
+        <h5 class="text-justify">Cadenas de texto: </h5>
+        <p class="text-justify">
+            Los string son tipos de datos que permiten almacenar palabras que no contengan caracteres especiales. Para 
+            declarar una variable con este tipo de dato, se debe poner la palabra "<span style="color: rgb(200, 147, 0);">string</span>" 
+            seguida del nombre de la variable y también, como en todos los anteriores, si se necesita, se puede poner una
+            palabra inicial.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+string nombre_variable = "palabra";
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><br><hr/><br>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo1.png' %}" style="width: 100%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo2.png' %}" style="width: 100%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo3.png' %}" style="width: 97%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">            
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo4.png' %}" style="width: 100%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo5.png' %}" style="width: 100%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <div class="mx-auto">
+                            <img src="{% static 'Im/variables-ejemplo6.png' %}" style="width: 100%;"/>
+                        </div>
+                        <br><br>
+                        <a href="{% url 'variables_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

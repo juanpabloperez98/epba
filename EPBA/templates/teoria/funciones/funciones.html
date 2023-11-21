@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Funciones</h1>
+        <br><hr>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Las funciones son bloques o segmentos de código que reciben un nombre y los cuales realizan o ejecutan una 
+            tarea específica dentro de un programa, esta herramienta es muy útil y utilizada dentro del paradigma de la 
+            programación estructurada, ya que permite dividir un programa de gran complejidad en segmentos de código más 
+            pequeños donde cada uno cumple una tarea diferente y este se puede repetir una cantidad N de veces dentro de 
+            un programa dependiendo de cuál sea la necesidad. Dichas funciones tienen algunas reglas a tener en cuenta 
+            como parámetros de entrada, su salida, nombre y demás cosas. Además, se sabe que existen varios tipos de 
+            funciones las cuales tienen una utilidad diferente y es importante conocer cada una de ellas con el fin de 
+            saber en qué momento y para qué usarlas.
+    </div>
+    <div class="col-md-5" id="expimg">
+        <img src="{% static 'Im/funciones.png' %}" style="width: 85%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para declarar una función se deben tener en cuenta tres cosas. Primero se debe poner el tipo de función que se 
+            necesita puesto que dependiendo de esto es que se va a tener una o más salidas y también, de esto depende qué
+            tipo de salida. Luego se debe poner el nombre que va a tener dicha función, este nombre comunmente coinside con 
+            la acción o tarea que va a cumplir la función, pues de esta manera se facilita su uso; por último, aunque no 
+            se hace necesario ya que también existen funciones vacias, se deben poner los parámetros de entrada que va a 
+            tener la función para operar dentro de ella.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+tipo_de_función nombre_función(parámetros de entrada){
+    Instrucciones;
+}
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Tipos de funciones</h2>
+        <hr/>
+        <p class="text-justify">
+            Los tipos de funciones que existen en Arduino se dividen en tres principalmente, las de paso por valor, las 
+            de paso por referencia y por último, las de paso por puntero. Dentro de las funcione de paso por valor se 
+            encuentran las mismas que en los tipos de datos que se vieron en la sección de variables, luego se encuentran
+            las de paso por referencia en las que ya no se pasa una variable como tal sino su dirección en memoria. Por 
+            último, se tienen las de paso por puntero en las cuales . A continuación se explica un poco de cada tipo para tener 
+            en cuenta cuál es el que se desea y se necesita utilizar para cada uno de los programas, además, se
+            mostrará su sintaxis dentro del lenguaje.
+        </p>
+        <br>
+        <h5 class="text-justify">Paso por valor: </h5>
+        <p class="text-justify">
+            Para las funciones de paso por valor cabe tener en cuenta que solo pueden retornar un valor y que este puede 
+            ser de cualquier tipo, para declarar el tipo de valor de la función que se desea trabajar, se puede tener en 
+            cuenta los tipos de dato que se vieron en la sección de variables. Una vez declarado el tipo de valor de la 
+            función, el cuál va a ser el mismo tipo del dato que retorne la función, se debe poner un nombre a la función 
+            el cual va a coincidir con la tarea o la acción que va a realizar dicha función, ya que esto permite que el 
+            programa sea más fácil de desarrollar y de entender. Luego, se van a poner los parámetros de entrada los cuales 
+            deben coincidir también con el tipo de dato de la función y por último, se ponen las intrucciones u operaciones 
+            que se desean realizar dentro de la función con los parámetros que se ingresaron a ella para luego retornar 
+            este resultado y usarlo en la función principal. Es de resaltar que en este tipo de función lo que se ingresa 
+            y se retorna son directamente los valores de las variables, importante siempre retornar el valor obtenido de 
+            la función, ya que es la única manera de sacarlo de la función.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+tipo_función nombre_función(tipo_variable nombre_variable){
+    Instrucciones;
+    return valor;
+}
+void setup(){
+    Instrucciones;
+}
+void loop(){
+    tipo_variable nombre_variable = valor;
+    nueva_variable = nombre_función(nombre_variable);
+}
+            </code>
+            </pre>
+        </div>
+        <br>
+        <h5 class="text-justify">Paso por referencia: </h5>
+        <p class="text-justify">
+            Ahora, en las funciones de paso por referencia se tiene una estructura parecida a la de paso por valor, pues
+            primero se debe de poner el tipo de función que se va a trabajar y seguido de esto se debe poner el nombre de 
+            la función teniendo en cuenta las recomendaciones dadas en el anterior tipo de función. Posteriormente, se 
+            deben poner los parámetros de entrada como ya se sabe, la diferencia es que en este caso los parámetros de 
+            entrada no son valores de variables como tal, sino que es el acceso directamente al espacio en memoria de dicha 
+            variable o lo que hay guardado en dicho espacio, ya que de esta manera puede modificar su contenido desde 
+            cualquier función o lugar del programa sin necesidad de almacenarla en otra como en el caso de paso por valor. 
+            Esta es la principal diferencia entre los dos tipos, la forma en la que se retornan o en que se toman los 
+            valores que se usan dentro de ella.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+tipo_función nombre_función(tipo_variable &nombre_variable){
+    Instrucciones;
+}
+void setup(){
+    Instrucciones;
+}
+void loop(){
+    tipo_variable nombre_variable = valor;
+    nombre_función(&nombre_variable);
+}
+            </code>
+            </pre>
+        </div>
+        <br>
+        <h5 class="text-justify">Paso por puntero: </h5>
+        <p class="text-justify">
+            Para finalizar, en el caso de paso por puntero se debe declarar el tipo de función que para esta siempre va a 
+            ser de tipo vacio, es decir, utilizando el comando <span style="color: rgb(200, 147, 0);">void</span>. Luego,
+            se debe poner el nombre de la función como usualmente se hace y por último, se deben poner los parámetros de 
+            entrada de la función, de igual manera que en la función anterior, estos parámetros cambian con respecto a los
+            demás tipos de funciones. En este caso los parámetros de entrada son punteros que apuntan directamente al 
+            espacio en memoria, lo que permite realizar cualquier operación sobre ella y de esta manera la función hacerse 
+            más útil.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+void nombre_función(tipo_puntuero *nombre_puntero){
+    Instrucciones;
+}
+void setup(){
+    Instrucciones;
+}
+void loop(){
+    tipo_variable nombre_variable = valor;
+    nombre_función(&nombre_variable);
+}
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'funciones_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

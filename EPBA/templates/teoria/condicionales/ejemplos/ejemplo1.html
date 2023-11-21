@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/condicionales#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #1</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Pida al usuario que ingrese 3 números enteros numero1, numero2 y numero3, lo que el programa debe hacer
+                    es determinar cuál es el mayor de los 3 números ingresados por el usuario.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int numero1;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int numero2;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>int numero3;</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>int mayor;</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>void setup(){</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>    Serial.begin(9600);</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>}</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>void loop(){</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>    Serial.print("Ingrese un número");</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>    numero1 = Serial.read();</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>    Serial.print("Ingrese otro número");</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>    numero2 = Serial.read();</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>    Serial.print("Ingrese otro número");</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>    numero3 = Serial.read();</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>    mayor = numero1;</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>    if(mayor < numero2){</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>        mayor = numero2;</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>    }</span>
+<span id="19"><span class="pr-n mr-3" style="color: blue;">19</span>    if(mayor < numero3){</span>
+<span id="20"><span class="pr-n mr-3" style="color: blue;">20</span>        mayor = numero3;</span>
+<span id="21"><span class="pr-n mr-3" style="color: blue;">21</span>    }</span>
+<span id="22"><span class="pr-n mr-3" style="color: blue;">22</span>    Serial.print("El número mayor es: ");</span>
+<span id="23"><span class="pr-n mr-3" style="color: blue;">23</span>    Serial.println(mayor);</span>
+<span id="24"><span class="pr-n mr-3" style="color: blue;">24</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese un número">
+            </div>
+            <div class="form-group desactivate" id="contval1">
+                <input type="text" clase="form-control" id="val1" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese otro número">
+            </div>
+            <div class="form-group desactivate" id="contval2">
+                <input type="text" clase="form-control" id="val2" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese otro número">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                El número mayor es: <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero en la cual se va a almacenar el primer número ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero en la cual se va a almacenar el segundo número ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se declara la variable de tipo entero en la cual se va a almacenar el tercer número ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Se declara la variable de tipo entero en la cual se va a almacenar el número mayor.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se imprime un mensaje en el que se pide el primer número al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número 1.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se imprime un mensaje en el que se pide el segundo número al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número 2.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Se imprime un mensaje en el que se pide el tercer número al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número 3.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>Ahora se iguala la variable mayor a el primer número.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">16</span>Se verifica si la variable mayor es menor que el número 2 utilizando la estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">17</span>De cumplirse la condición anterior, se iguala la variable mayor al número 2.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">18</span>Se cierra la estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">19</span>Se verifica si la variable mayor es menor que el número 3 utilizando la estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">20</span>De cumplirse la condición anterior, se iguala la variable mayor al número 3.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">21</span>Se cierra la estructura if.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">22</span>Se imprime un mensaje previo el cual acompaña el resultado obtenido al hacer las comparaciones.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">23</span>Se imprime el número mayor.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">24</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 3,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+
+        if (!isNaN(valor_entrada)) {
+            cont++
+            valores.push(valor_entrada)
+            mayor = valores[0]
+            if(mayor<valores[1]){
+                mayor = valores[1]
+            }
+            if(mayor<valores[2]){
+                mayor = valores[2]
+            }
+
+            if (cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = mayor
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            } else {
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Ciclos</h1>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué son?</h2>
+        <hr/>
+        <p class="text-justify">
+            Los ciclos o estructuras de repetición, son un conjunto de instrucciones u operaciones que se ejecuta un 
+            número determinado de veces, por ejemplo las tablas de multiplicar, o infinitas veces dependiendo de cual sea 
+            la necesidad del programa. Con estas estructuras se logra establecer una manera de repetir una expresión las 
+            veces que sea necesaria sin necesidad de copiarla tanto como se necesite en el código, sino que únicamente 
+            poniéndola una vez dentro de dicha estructura, se llegará al mismo objetivo. Dentro de estas estructuras 
+            existen dos principales, la primer a es el ciclo <span style="color: peru;">for</span> y la segunda es el 
+            ciclo <span style="color: peru;">while</span> que dependiendo de el problema que se tenga se va a necesitar 
+            de una o de la otra. A continuación se explica cada una de estas estructuras.
+        </p>
+    </div>
+    <div class="col-md-5 mx-auto" id="expimg">
+        <img src="{% static 'Im/ciclos.png' %}" style="width:80%;"/>
+    </div>
+</div>
+<hr>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>For</h2>
+        <hr/>
+        <p class="text-justify">
+            El ciclo <span style="color: peru;">for</span> es una ciclo que está determinado con 3 expresiones dentro de 
+            su argumento las cuales hacen que este funcione tal y como es. La primera expresión es en donde se define desde 
+            que número o posición quiere que inicie la variable la cual funcionará como iterador o indexador, como segunda 
+            expresión se tiene el límite hasta el cual llega el ciclo y por último, como tercera expresión se tiene el 
+            contador o los pasos en los que va a avanzar dicho ciclos. Posteriormente, se define el bloque de instrucciones 
+            que se desea repetir el número de veces indicado en el argumento de la estructura. Con esto se logra tener un 
+            ciclo que puede ser controlado fácilmente y que va a cumplir con las características que se desea.
+        </p>
+        <br>
+        <h4 class="text-justify">Sintaxis:</h4>
+        <p class="text-justify">
+            Una vez conocido el ciclo, se procede a dar un ejemplo o a mostrar cómo es la sintaxis de la estructura, qué 
+            se debe poner y en qué orden. A continuación, se muestra claramente el orden y la forma en que se debe poner.
+        </p>
+        <div class="col-md-11 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+for(expresion_1; expresion_2; expresion_3){
+    Instrucciones;
+}
+            </code>
+            </pre>
+        </div>
+</div>
+<div class="col-md-5" id="exp">
+        <h2>While</h2>
+        <hr/>
+        <p class="text-justify">
+            El ciclo <span style="color: peru;">while</span> es una ciclo que está determinado con una sola expresión 
+            lógica dentro de su argumento la cual hace que esta estructura tenga que cumplir una condición para su 
+            funcionamiento. La expresión lógica que debe de ir como argumento, al igual que en la estructura de selección,
+            da como resultado un valor booleano que, dependiendo de cual sea este, va a permitir que el ciclo siga iterando 
+            o va a hacer que se detenga. Posteriormente, se define el bloque de instrucciones que se desea repetir el 
+            número de veces indicado en el argumento de la estructura. Con esto se logra tener un ciclo que puede ser 
+            controlado fácilmente por una condición y que va a cumplir con el objetivo que se desea.
+        </p>
+        <br>
+        <h4 class="text-justify">Sintaxis:</h4>
+        <p class="text-justify">
+            Una vez conocido el ciclo, se procede a dar un ejemplo o a mostrar cómo es la sintaxis de la estructura, qué 
+            se debe poner y en qué orden. A continuación, se muestra claramente el orden y la forma en que se debe poner.
+        </p>
+        <div class="col-md-11 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+while(expresion_logica){
+    Instrucciones;
+}
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos1-2-3.png' %}" style="width: 90%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos1-2-3.png' %}" style="width:90%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos1-2-3.png' %}" style="width: 90%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/ciclos-ejemplos4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'ciclos_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

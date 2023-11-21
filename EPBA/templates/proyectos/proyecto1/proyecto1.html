@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/proyecto.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<div class="row mx-auto content" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Proyecto #1</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto content " id="explain">
+    <div class="col-md-10" id="exp1">
+        <h2>Objetivo</h2>
+        <hr/><br>
+        <p class="text-justify">
+            En una finca se montó un sistema de riego automático el cual permite al agricultor tener un mejor y más eficiente
+            control del cultivo teniendo grandes ventajas como el ahorro de recursos tanto hídricos como económicos, además 
+            de que se tiene un cultivo más productivo y de mejor calidad. Este sistemas funciona de forma automática, en 
+            donde se tienen unos límites de algunos parámetros que se miden como temperatura, humedad, ph, entre otros; y a 
+            través de estos se activan y se desactivan los diferentes equipos que ayudan a controlar todas estas variables. 
+            Por otra parte, se puede manejar manualmente encendiendo y apagando switchs, pero para esto es necesario que el 
+            agricultor tenga la posibilidad de ver el valor de estos parámetros y así determinar cuando encender o apagar 
+            un switch, por esta razón, se pide desarrollar un programa que permita al usuario observar en el monitor serial 
+            el valor de los parámetros ya almacenados para así poder tomar la decisión de encender o apagar el sistema de 
+            forma manual.
+        </p>
+        <h4 class="text-justify">Cosas para tener en cuenta: </h4>
+        <p class="text-justify"> 
+            Se sabe que el arduino cuando lee valores por el pin análogo lee valores entre 0 y 1023, por esta razón se debe 
+            hacer la conversión de este valor al valor que se desea mostrar de cada parámetro y para esto se utiliza una
+            función de Arduino llamada map, la cual mapea o reescribe los valores para convertirlos a los valores deseados.
+            Por otra parte, siempre que en una variable se almacene un pin del Arduino, se debe especificar al programa si 
+            este pin va a funcionar como entrada o salida, ya que dependiendo de esto dicho pin va a funcionar de diferentes 
+            maneras y también va a configurarse diferente. Para esto Arduino tiene una función llamada pinMode() la cual 
+            permite declarar si es de entrada o salida.
+        </p>
+        <br>
+        <button href="#" id="empezar" class="button">Empezar proyecto</button>
+        <br><br>
+    </div>
+</div>
+<div class="row mx-auto content desactivate" id="desarrollo">
+    <div class="mx-auto col-md-5 mod1">
+        <h3 class="text-center">Solución</h3>
+        <pre id="code">
+            <code class="language-c++">
+<span style="color: blue;"> 1 </span><span>int SensorTemperatura = A0;</span>
+<span style="color: blue;"> 2 </span><span>int SensorHumedad = A1;</span>
+<span style="color: blue;"> 3 </span><span>int SensorPh = A2;</span>
+<span style="color: blue;"> 4 </span><span>int temperatura = 0;</span>
+<span style="color: blue;"> 5 </span><span>int humedad = 0;</span>
+<span style="color: blue;"> 6 </span><span>float ph = 0,0;</span>
+<span style="color: blue;"> 7 </span><span>void setup(){</span>
+<span style="color: blue;"> 8 </span><span> Serial.begin(9600);</span>
+<span style="color: blue;"> 9 </span><span>}</span>
+<span style="color: blue;">10 </span><span>void loop(){</span>
+<span style="color: blue;">11 </span><span id="cont-higlight1" class="line-higlight"><span id="linea-higlight1"> </span><span id="linea-1" class="desactivate"> temperatura = analogRead(SensorTemperatura);</span></span>
+<span style="color: blue;">12 </span><span> humedad = analogRead(SensorHumedad);</span>
+<span style="color: blue;">13 </span><span> ph = analogRaed(SensorPh);</span>
+<span style="color: blue;">14 </span><span> temperatura = map(temperatura, 0, 1023, 0, 100);</span>
+<span style="color: blue;">15 </span><span> humedad = map(humedad, 0, 1023, 0, 100);</span>
+<span style="color: blue;">16 </span><span id="cont-higlight2" class="line-higlight"><span id="linea-higlight2"> </span><span id="linea-2" class="desactivate"> ph = map(ph, 0, 1023, 0, 14);</span></span>
+<span style="color: blue;">17 </span><span> Serial.print("La temperatura es: ");</span>
+<span style="color: blue;">18 </span><span> Serial.print(temperatura);</span>
+<span style="color: blue;">19 </span><span> Serial.println("° C.");</span>
+<span style="color: blue;">20 </span><span id="cont-higlight3" class="line-higlight"><span id="linea-higlight3"> </span><span id="linea-3" class="desactivate"> Serial.print("La humedad es: ");</span></span>
+<span style="color: blue;">21 </span><span> Serial.print(humedad);</span>
+<span style="color: blue;">22 </span><span> Serial.println("%.");</span>
+<span style="color: blue;">23 </span><span> Serial.print("El ph del suelo es: ");</span>
+<span style="color: blue;">24 </span><span id="cont-higlight4" class="line-higlight"><span id="linea-higlight4"> </span><span id="linea-4" class="desactivate"> Serial.print(ph);</span></span>
+<span style="color: blue;">25 </span><span> Serial.println(" de acidez.");</span>
+<span style="color: blue;">26 </span><span>}</span>
+            </code>
+        </pre>
+        <div class="text-center desactivate" id="explain-code">
+            <button href="#" id="code-explain" class="button">Explicar código</button>
+        </div>
+    </div>
+    <div class="mx-auto col-md-5 desactivate mod1" id="explicacion">
+        <h3 class="text-center">Explicación</h3>
+        <pre>
+            <code class="language-c++">
+<span style="color: blue;"> 1 </span><span>Se almacena el pin análogo del Arduino en una variable nombrada como el parámetro que está leyendo, en este caso es SensorTemperatura.</span>
+<span style="color: blue;"> 2 </span><span>Se almacena el pin análogo del Arduino en una variable nombrada como el parámetro que está leyendo, en este caso es SensorHumedad.</span>
+<span style="color: blue;"> 3 </span><span>Se almacena el pin análogo del Arduino en una variable nombrada como el parámetro que está leyendo, en este caso es SensorPh.</span>
+<span style="color: blue;"> 4 </span><span>Se declara una variable de tipo entero en la cual se va a almacenar la lectura que se tenga por el pin análogo, de igual forma esta se nombre con un nombre que represente el parámetro que se está midiendo, por ejemplo temperatura.</span>
+<span style="color: blue;"> 5 </span><span>Se declara una variable de tipo entero en la cual se va a almacenar la lectura que se tenga por el pin análogo, de igual forma esta se nombre con un nombre que represente el parámetro que se está midiendo, por ejemplo humedad.</span>
+<span style="color: blue;"> 6 </span><span>Se declara una variable de tipo flotante en la cual se va a almacenar la lectura que se tenga por el pin análogo, de igual forma esta se nombre con un nombre que represente el parámetro que se está midiendo, por ejemplo ph.</span>
+<span style="color: blue;"> 7 </span><span>Se abre la función principal de configuración que tiene Arduino por defecto.</span>
+<span style="color: blue;"> 8 </span><span>Luego, se inicia la comunicación serial a una velocidad de 9600 baudios.</span>
+<span style="color: blue;"> 9 </span><span>Se cierra la función de configuración.</span>
+<span style="color: blue;">10 </span><span>Se abre la función principal de ciclo infinito en la cual se pone el código que se desea ejecutar.</span>
+<span style="color: blue;">11 </span><span>Se lee el pin análogo A0 y se almacena su lectura en la variable temperatura.</span>
+<span style="color: blue;">12 </span><span>Se lee el pin análogo A1 y se almacena su lectura en la variable humedad.</span>
+<span style="color: blue;">13 </span><span>Se lee el pin análogo A2 y se almacena su lectura en la variable ph.</span>
+<span style="color: blue;">14 </span><span>Luego se mapean o convierten los valores de entrada en valores que sean entendible para el usuario y mostrarlos en la salida.</span>
+<span style="color: blue;">15 </span><span>También se mapean o convierten los valores de entrada en valores que sean entendible para el usuario y mostrarlos en la salida.</span>
+<span style="color: blue;">16 </span><span>También se mapean o convierten los valores de entrada en valores que sean entendible para el usuario y mostrarlos en la salida.</span>
+<span style="color: blue;">17 </span><span>Se imprime un mensaje informativo expresando o explicando cuál es el parámetro o variable que se va a mostrar en el monitor serial para que de esta manera sea más entendible el programa.</span>
+<span style="color: blue;">18 </span><span>Además, se imprime la variable que se quiere mostrar, en este caso la temperatura leída por el sensor.</span>
+<span style="color: blue;">19 </span><span>También se imprime otro mensaje mostrando las unidades en las que se expresa dicho parámetro.</span>
+<span style="color: blue;">20 </span><span>Se imprime un mensaje informativo expresando o explicando cuál es el parámetro o variable que se va a mostrar en el monitor serial para que de esta manera sea más entendible el programa.</span>
+<span style="color: blue;">21 </span><span>Además, se imprime la variable que se quiere mostrar, en este caso la humedad leída por el sensor.</span>
+<span style="color: blue;">22 </span><span>También se imprime otro mensaje mostrando las unidades en las que se expresa dicho parámetro.</span>
+<span style="color: blue;">23 </span><span>Se imprime un mensaje informativo expresando o explicando cuál es el parámetro o variable que se va a mostrar en el monitor serial para que de esta manera sea más entendible el programa.</span>
+<span style="color: blue;">24 </span><span>Además, se imprime la variable que se quiere mostrar, en este caso el ph leído por el sensor.</span>
+<span style="color: blue;">25 </span><span>También se imprime otro mensaje mostrando las unidades en las que se expresa dicho parámetro.</span>
+<span style="color: blue;">26 </span><span>Por último, se cierra la función de ciclo infinito.</span>
+            </code>
+        </pre>
+        <div class="text-md-center">
+            <button href="#" class="button" id="reiniciar">Reiniciar</button>
+        </div>
+    </div>
+
+
+    <div class="mx-auto col-md-5 mod1 text-center" id="form">
+        <h3 id="linea">Linea #</h3>
+        <br>
+        <p id="explain_code" class="text-center"></p>
+        <br>
+        <form id="formulario" class="" action="">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select1" value="1" checked>
+                <label class="form-check-label" for="select1" id="label1">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select2" value="2">
+                <label class="form-check-label" for="select2" id="label2">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select3" value="3">
+                <label class="form-check-label" for="select3" id="label3">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="select" id="select4" value="4">
+                <label class="form-check-label" for="select4" id="label4">
+                </label>
+            </div>
+            <br><br>
+            <button type="submit" class="button">Probar</button>
+        </form>
+    </div>
+
+    <div class="desactivate mx-auto col-md-5 mod1 text-center" id="felicitacion">
+        <h3>Felicitaciones</h3>
+        <br>
+        <p id="congratulation"></p>
+        <br>
+        <div id="siguiente_botones">
+            <button href="#" class="button" id="sig_">Siguiente</button>
+        </div>
+    </div>
+</div>
+<div class="row mx-auto content desactivate" id="finish">
+    <div class="mx-auto col-md-5">
+        
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    var cont = 1,
+        num_total = 4
+
+    var lineas = {
+        '1': {
+            'line_code':11,
+            'correct_line':1,
+            'congratulation':'Para almacenar una lectura, se debe igualar una variabla en la cual se va a almacenar la lectura a el comando que permite leer los pines análogos, en este caso el comando analogRaed y entre paréntesis se pone el nombre que se le dio al pin que se va a leer. Siempre recordar que se debe finalizar con un punto y coma.',
+            'explaincode':'Se debe almacenar la lectura del sensor que se guarda en la variable SensorTemperatura en una variable para posteriormente mostrarla o procesarla, ¿Qué línea de código viene aquí?',
+            'values':['temperatura = analogRead(SensorTemperatura);','temperatura = analogRead(SensorTemperatura)','temperatura = analogRead();','analogRead(SensorTemperatura);']
+        },
+        '2': {
+            'line_code':15,
+            'correct_line':4,
+            'congratulation':'La función map permite convertir los datos que se tienen como entrada de los pines análogos en valores que se necesiten como salida y que sean entendibles o legibles para el usuario. De igual manera se debe recordar finalizar siempre con punto y coma.',
+            'explaincode':'Es necesario hacer la conversión de los datos que se tienen en la entrada a datos que se necesitan como salida y que puedan ser entendidos por el usuario, ¿Qué línea de código se debe de poner aquí?',
+            'values':['ph = map(ph, 0, 1023);','map(ph, 0, 1023, 0, 14);','ph = map(ph, 0, 1023, 0, 14)','ph = map(ph, 0, 1023, 0, 14);']
+        },
+        '3': {
+            'line_code':20,
+            'correct_line':2,
+            'congratulation':'A través del monitor serial se puede imprimir o mostar cualquier tipo de mensaje y en este caso, como es un mensaje informativo se debe poner entre comillas, utilizando el comando Serial.print se puede imprimir lo que sea en el monitor para de esta manera hacerlo visible.',
+            'explaincode':'Es importante interactuar con el usuario en la mayor medida de lo posible, ya que esto permite una mejor comunicación y por ende permite que el usuario entienda de mejor manera lo que el software quiere mostrar, por eso es vital poner un mensaje para saber cuál es la variable que se va a mostrar, ¿Qué línea de código viene aquí?',
+            'values':['Serial.print("La humedad es: ")','Serial.print("La humedad es: ");','Serial.print(La humedad es:);','print("La humedad es: ");']
+        },
+        '4': {
+            'line_code':24,
+            'correct_line':3,
+            'congratulation':'De igual forma, para imprimir valores almacenados en variables se puede utilizar el comando Serial.print y dentro del paréntesis basta con colocar el nombre de la variable sin comillas, este permite mostrar en el monitor serial el valor almacenado en la variable.',
+            'explaincode':'Por último, como los valores de los parámetros que afectan el cultivo los cuales se midieron con los sensores están almacenadas en variables, es necesario imprimir en el monitor serial cada variable, ¿Qué línea de código viene aquí?',
+            'values':['Serial.print(ph)','print("Ha finalizado.");','Serial.print(ph);','Serial.print();']
+        }
+    }
+
+    var addLinesInitial = () => {
+        $('#linea').text('Linea #' + lineas[cont].line_code)
+        $('#explain_code').text(lineas[cont].explaincode)
+        for (let i = 0; i < 4; i++) {
+            var identificador = '#label'+ (i+1)
+            const element = lineas[cont].values[i]
+            $(identificador).text(element)
+        }
+    }
+
+    $('#empezar').on('click', (e) => {
+        e.preventDefault() //Para que al dar click no se recargue la pagina
+        $('#explain').addClass('desactivate')
+        $('#desarrollo').removeClass('desactivate')
+        addLinesInitial()
+    })
+
+    $('#formulario').submit((e) =>  {
+        e.preventDefault()
+        var line = $('input[name="select"]:checked').val(),
+            line_higlight = '#linea-higlight'+cont,
+            line_activate = '#linea-'+cont,
+            cont_higlight = '#cont-higlight'+cont
+
+        if(lineas[cont].correct_line == parseInt(line)){
+            $(line_higlight).toggle('')
+            $(line_activate).toggle('')
+            $('#formulario')[0].reset()
+            cont++
+            if(cont <= num_total){
+                addLinesInitial()
+                $(cont_higlight).removeClass('line-higlight')
+                $('#congratulation').text(lineas[cont-1].congratulation)
+            }else{
+                $(cont_higlight).removeClass('line-higlight')
+                // $('#form').toggle('')
+                $('#explain-code').toggle('')
+                $('#siguiente_botones').toggle('')
+                $('#congratulation').text(lineas[cont-1].congratulation)
+            }
+            $('#felicitacion').toggle('')
+            $('#form').toggle('')
+        }else{
+            alert("¿Estas seguro?... revisa bien")
+        }
+    })
+
+    $('#sig_').on('click', (e) => {
+        e.preventDefault()
+        $('#form').toggle('')
+        $('#felicitacion').toggle('')
+    })
+
+    $('#code-explain').on('click', (e) => {
+        e.preventDefault()
+        $('#explain-code').toggle('')
+        $('#explicacion').toggle('')
+        $('#felicitacion').toggle('')
+    })
+
+    $('#reiniciar').on('click', (e) => {
+        e.preventDefault()
+        location.reload()
+    })
+</script>
+{% endblock scripts %}

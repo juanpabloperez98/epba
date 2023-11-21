@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/condicionales#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #6</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Determinar la cantidad de dinero que recibirá un trabajador por concepto de las horas extras trabajadas 
+                    en una empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto se consideran horas 
+                    extras y que estas se pagan al doble de una hora normal cuando no exceden de 8; si las horas extras 
+                    exceden de 8, se pagan las primeras 8 al doble de lo que se pagan las horas normales y el resto al 
+                    triple.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int horas;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int valor;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>int totalapagar;</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>int horasextras;</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>int pagardobles;</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>int pagartriples;</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>void setup(){</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>    Serial.begin(9600);</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>}</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>void loop(){</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>    Serial.print("Ingrese el número de horas trabajadas");</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>    horas = Serial.read();</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>    Serial.print("Ingrese el valor de la hora");</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>    valor = Serial.read();</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>    if(horas <= 40){</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>        totalapagar = valor*horas;</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>    }else{</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>        horasextras = horas-40;</span>
+<span id="19"><span class="pr-n mr-3" style="color: blue;">19</span>        if(horasextras <= 8){</span>
+<span id="20"><span class="pr-n mr-3" style="color: blue;">20</span>            pagardobles = horasextras*valor*2;</span>
+<span id="21"><span class="pr-n mr-3" style="color: blue;">21</span>            totalapagar = pagardobles;</span>
+<span id="22"><span class="pr-n mr-3" style="color: blue;">22</span>        }else{</span>
+<span id="23"><span class="pr-n mr-3" style="color: blue;">23</span>            pagardobles = 8*valor*2;</span>
+<span id="24"><span class="pr-n mr-3" style="color: blue;">24</span>            pagartriples = (horasextras-8)*valor*3;</span>
+<span id="25"><span class="pr-n mr-3" style="color: blue;">25</span>            totalapagar = pagardobles+pagartriples;</span>
+<span id="26"><span class="pr-n mr-3" style="color: blue;">26</span>        }</span>
+<span id="27"><span class="pr-n mr-3" style="color: blue;">27</span>        totalapagar = (40*valor)+totalapagar;</span>
+<span id="28"><span class="pr-n mr-3" style="color: blue;">28</span>    }</span>
+<span id="29"><span class="pr-n mr-3" style="color: blue;">29</span>    Serial.print("Al trabajador se le debe pagar: ");</span>
+<span id="30"><span class="pr-n mr-3" style="color: blue;">30</span>    Serial.print(totalapagar);</span>
+<span id="31"><span class="pr-n mr-3" style="color: blue;">31</span>    Serial.println(" pesos.");</span>
+<span id="32"><span class="pr-n mr-3" style="color: blue;">32</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese el número de horas trabajadas">
+            </div>
+            <div class="form-group desactivate" id="contval1">
+                <input type="text" clase="form-control" id="val1" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese el valor de la hora">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero en la cual se va a almacenar el número de horas trabajadas ingresadas por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero en la cual se va a almacenar el valor de cada hora ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se declara la variable de tipo entero en la cual se va a almacenar el total a pagar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Se declara la variable de tipo entero en la cual se va a almacenar el número de horas extras.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Se declara la variable de tipo entero en la cual se va a almacenar el precio de las horas al doble del valor.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Se declara la variable de tipo entero en la cual se va a almacenar el precio de las horas al triple del valor.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se inicia la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Luego, se finzaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se imprime un mensaje en el que se pide el número de horas trabajadas al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número de horas trabajadas.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Se imprime un mensaje en el que se pide el valor de la hora de trabajo al usuario.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se guarda el valor ingresado por teclado en la variable correspondiente al valor de la hora trabajada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>Se comprueba con una estructura if si el número de horas ingresadas es menor o igual a 40.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">16</span>De cumlirse lo anterior, se calcula el total a pagar multiplicando el número de horas trabajadas por el valor de la hora.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">17</span>Se cierra la estructura if y se abre la estructura que se ejecuta por defecto.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">18</span>Ahora se calculan las horas extras restando al número de horas ingresadas con 40.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">19</span>Luego se comprueba con una estructura if anidada si el número de horas extras es igual o menor a 8.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">20</span>De cumplirse lo anterior, se calculan las horas que se pagan al doble multiplicando el número de horas extras por el valor de la hora y luego por 2.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">21</span>Luego se iguala la variable del total a pagar con la de horas pagadas al doble.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">22</span>Se cierra la estructura if anidada y se abre la estructura que se ejecuta por defecto, es decir, la estructura else.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">23</span>Se calculan las horas que se pagan al doble multiplicando 8 horas extras por el valor de la hora y luego por 2.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">24</span>Luego se calculan las horas que se pagan al triple multiplicando el número restante de horas extras por el valor de la hora y luego por 3.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">25</span>Ahora se calcula el total a pagar sumando las horas pagadas al doble con las horas pagadas al triple.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">26</span>Se cierra la estructura else anidada.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">27</span>Nuevamente se calcula el total a pagar sumando el producto de 40 horas por el valor de la hora con el total a pagar calculado anteriormente.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">28</span>Se cierra la estructura else principal.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">29</span>Se imprime un mensaje informativo diciendo al usuario cuánto se debe pagar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">30</span>Luego, se imprime el valor del total a pagarle al trabajador.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">31</span>Por último, se imprime un mensaje en el que se pone las unidades del dinero a pagar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">32</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 2,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+        if (!isNaN(valor_entrada)) {
+            cont++
+            valores.push(valor_entrada)
+            mensaje = ''
+            total = 0
+            horasextra = 0
+            pagardobles = 0
+            pagartriples = 0
+            horas = valores[0]
+            valor = valores[1]
+            if(horas<=40){
+                total = valor*horas
+            }else{
+                horasextra = horas-20
+                if(horasextra<=8){
+                    pagardobles = horasextra*valor*2
+                    total = pagardobles
+                }else{
+                    pagardobles = 8*valor*2
+                    pagartriples = (horasextra-8)*valor*3
+                    total = pagardobles+pagartriples
+                }
+                total = (40*valor)+total
+            }
+            mensaje = 'Al trabajador se le deben pagar: '+ total + ' pesos.'
+
+            if (cont == num_entradas) {
+                
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = mensaje
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            } else {
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+</script>
+{% endblock scripts %}

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Pines digitales</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué es?</h2>
+        <hr/>
+        <p class="text-justify">
+            Como Arduino es un sistema embebido, está compuesto de bastantes elementos que en este caso permiten una 
+            interacción con el exterior, pues podemos controlar dispositivos que van a tomar acción sobre cosas que pasan 
+            a nivel físico y también podemos leer variables del medio ambiente o de otros sistemas que sirven para luego 
+            ser analizadas y hecho esto, tomar decisiones para realizar una acción sobre ello. Por esta razón, el Arduino 
+            tiene lo que se denominan 13 pines digitales los cuales van desde el 1 hasta el 13, y quienes permiten leer 
+            valores booleanos o binarios, ya que solo pueden leer si existe un voltaje (5v) o no existe voltaje (0v); o 
+            permiten tener salidas de 0 y 5 voltios para de esta manera controlar elementos exteriores como motores, luces, 
+            bocinas, entre otros. Dependiendo de si se tiene un voltaje o no el valor será HIGH o LOW y gracias a esto, se
+            puede tener un comunicación en la que dependiendo de los pulsos tendrá diferentes mensajes contenidos en ellos
+            para de esta manera tomar decisiones o acciones frente a dicha entrada. Como ya se mencionó, estos pines 
+            digitales pueden ser de entrada o de salida, por lo que se pueden configurar de diferentes formas para darle 
+            diferentes usos.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <br><br><br><br><br><br><br>
+        <img src="{% static 'Im/pinesdigitales.png' %}" style="width: 100%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para controlar los pines digitales hay que tener varias cosas en cuenta. Primero se sabe que el pin se puede 
+            almacenar en una variable que tenga el nombre del parámetro que se va a leer o del dispositivo que se desea
+            controlar y también se podría poner directamente el número de dicho pin para realizar cualuier acción. Segundo, 
+            para realizar la lectura de cualquiera de estos pines se debe utilizar el comando digitalRead(), el cual tiene 
+            como parámetro el nombre de la variable donde se almacenó el pin o el número del pin directamente como ya se 
+            había mencionado. Una recomendación nuevamente, es que la lectura de dicho pin se almacene en una nueva 
+            variable para posteriormente realizar diferentes operaciones o acciones con ella. Por último, para enviar 
+            una señal a ya sea de 0 voltios, 5 voltios o de PWM, se debe usar el comando digitalWrite(), el cual tiene 
+            como parámetros el nombre de la variable donde se almacenó el pin o el número del pin directamente como ya se 
+            había mencionado, seguido de una coma y el valor de voltaje que se le quiere dar, ya sea alto o bajo (HIGH o 
+            LOW); o un valor de PWM que puede tomar valores entre 0 y 255.
+        </p>
+        <h5 class="text-justify">Para leer el pin:</h5>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+nueva_variable = digitalRead(pin_digital);
+            </code>
+            </pre>
+        </div>
+        <h5 class="text-justify">Para enviar una señal al pin:</h5>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+digitalWrite(pin_digital, valor);
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_digitales_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

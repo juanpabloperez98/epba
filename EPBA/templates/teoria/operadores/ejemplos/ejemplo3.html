@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+                <li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/operadores#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #3</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><br>
+                <p>
+                    Desarrollar un programa en el que se pidan dos números por teclado, a estos dos número se les debe
+                    de calcular el promedio y posterior a esto, como salida, se debe imprimir el resultado de esta
+                    operación.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3>
+        <br>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>int numero1;</span>                    
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int numero2;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>int promedio;</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>void setup(){</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>    Serial.begin(9600);</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>}</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>void loop(){</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>    Serial.print("Ingrese un número");</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>    numero1 = Serial.read();</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>    Serial.print("Ingrese otro número");</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>    numero2 = Serial.read();</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>    promedio = (numero1+numero2)/2;</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>    Serial.print("El promedio es: ");</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>    Serial.println(promedio);</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group" id="contval0">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese un número">
+            </div>
+            <div class="form-group desactivate" id="contval1">
+                <input type="text" clase="form-control" id="val1" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese otro número">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                El promedio es: <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3>
+        <br>
+        <pre>
+        <code class="language-c++ text-justify">
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 1</span>Se declara la variable de tipo entero en la cual se va a almacenar el primer número ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 2</span>Se declara la variable de tipo entero en la cual se va a almacenar el segundo número ingresado por teclado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 3</span>Se declara la variable de tipo entero en la cual se va a almacenar el resultado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 4</span>Se inicia el ciclo la función de configuración principal del programa.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 5</span>Ahora se da inicio a la comunicación serial a una velocidad de 9600 baudios.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 6</span>Luego, se finaliza la función de configuración.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 7</span>Se inicializa también la función de ciclo infinito del programa en el cual se pone todo el código que se desea ejecutar.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 8</span>Se imprime un mensaje en el que se pide al usuario el primer número.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;"> 9</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número 1.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">10</span>Se imprime un mensaje en el que se pide al usuario ingresar el segundo número.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">11</span>Se guarda el valor ingresado por teclado en la variable correspondiente al número 2.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">12</span>Ahora se suman estos dos números y se divide por dos para hallar el promedio, luego se guarda en la variable correspondiente.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">13</span>Se imprime un mensaje previo el cual acompaña el resultado.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">14</span>Se imprime el promedio.</span>
+<span id=""><span class="pr-n mr-3" style="color: blue;">15</span>Se termina la función de ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 2,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var id_select = 'val' + cont,
+            valor_entrada = parseInt(document.getElementById(id_select).value)
+
+
+        if (!isNaN(valor_entrada)) {
+            cont++
+            valores.push(valor_entrada)
+
+            if (cont == num_entradas) {
+                document.getElementById('entradas').className = 'desactivate'
+                document.getElementById('siguiente_').className = 'desactivate'
+                document.getElementById('reiniciar_').className = 'button'
+                document.getElementById('salida').className = ''
+                document.getElementById('resultado').innerHTML = (valores[0] + valores[1]) / 2
+                document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+            } else {
+                var cont_ante = cont - 1
+                document.getElementById('contval' + cont).classList.remove('desactivate')
+                document.getElementById('contval' + cont_ante).classList.add('desactivate')
+            }
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Dato no válido',
+                text: 'Ingrese un dato númerico!',
+            })
+        }
+
+    })
+
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+
+</script>
+{% endblock scripts %}

@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+    <div id="header" class="container row">
+        <div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="/pwm#ejemplos" accesskey="4">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock headers %}
+
+{% block content %}
+<!-- Enunciado -->
+<div class="row mx-auto content" id="enunciado">
+    <div class="row mx-auto">
+        <div class="col-md-12 text-center">
+            <h1 style="padding-bottom: 1em;">Ejemplo #2</h1>
+            <div class="col-md-5" id="mod">
+                <h3>Enunciado</h3><hr/>
+                <p>
+                    Se desea realizar un programa para un colegio el cual le permita al usuario ingresar el nombre de 3 
+                    materias, al final se deben mostrar las materias que se agregaron.
+                </p>
+                <a href="#" id="empezar" class="button">Empezar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Código -->
+<div class="row mx-auto content desactivate" id="content">
+    <div class="col-md-5 mx-auto mod1" id="mod1">
+        <h3>Solución</h3><hr/>
+        <div class="text-justify mt-2">
+            <pre>
+                  <code class="language-c++">
+<span id="1"><span class="pr-n mr-3" style="color: blue;"> 1</span>string materias[3];</span>
+<span id="2"><span class="pr-n mr-3" style="color: blue;"> 2</span>int i = 0;</span>
+<span id="3"><span class="pr-n mr-3" style="color: blue;"> 3</span>void setup(){</span>
+<span id="4"><span class="pr-n mr-3" style="color: blue;"> 4</span>    Serial.begin(9600);</span>
+<span id="5"><span class="pr-n mr-3" style="color: blue;"> 5</span>}</span>
+<span id="6"><span class="pr-n mr-3" style="color: blue;"> 6</span>void loop(){</span>
+<span id="7"><span class="pr-n mr-3" style="color: blue;"> 7</span>    while(true){</span>
+<span id="8"><span class="pr-n mr-3" style="color: blue;"> 8</span>        Serial.print("Ingrese una materia: ");</span>
+<span id="9"><span class="pr-n mr-3" style="color: blue;"> 9</span>        materias[i] = Serial.read();</span>
+<span id="10"><span class="pr-n mr-3" style="color: blue;">10</span>        i++;</span>
+<span id="11"><span class="pr-n mr-3" style="color: blue;">11</span>        if(i>=3){</span>
+<span id="12"><span class="pr-n mr-3" style="color: blue;">12</span>           break;</span>
+<span id="13"><span class="pr-n mr-3" style="color: blue;">13</span>        }</span>
+<span id="14"><span class="pr-n mr-3" style="color: blue;">14</span>    }</span>
+<span id="15"><span class="pr-n mr-3" style="color: blue;">15</span>    for(int n=1; n<=3; n++){</span>
+<span id="16"><span class="pr-n mr-3" style="color: blue;">16</span>        Serial.println(materias[n]);</span>
+<span id="17"><span class="pr-n mr-3" style="color: blue;">17</span>    }</span>
+<span id="18"><span class="pr-n mr-3" style="color: blue;">18</span>}</span>
+                  </code>
+                </pre>
+        </div>
+        <div id="entradas" class="desactivate">
+            <div class="form-group">
+                <input type="text" clase="form-control" id="val0" style="width: 80%; border-color: rgb(220, 220, 220);"
+                    placeholder="Ingrese una materia">
+            </div>
+        </div>
+        <div id="salida" class="desactivate">
+            <p>
+                <span id="resultado"></span>
+            </p>
+        </div>
+        <div class="botones">
+            <a href="#" class="button" id="ejecutar">Ejecutar</a>
+            <a href="#" class="button desactivate" id="siguiente_">Siguiente</a>
+            <a href="#" class="button desactivate" id="reiniciar_">Reiniciar</a>
+        </div>
+    </div>
+    <!-- Explicación -->
+    <div class="col-md-5 mx-auto mod1 desactivate" id="expli">
+        <h3>Explicación</h3><hr/>
+      <pre>
+        <code class="language-c++ text-justify">
+<span><span class="pr-n mr-3" style="color: blue;"> 1</span>Declaramos un arreglo de tipo string el cual va a tener un tamaño de 3 posiciones.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 2</span>Declaramos una variable llamada i de tipo entero, la cual será el contador que se va a usar en el ciclo.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 3</span>Se inicia la función de configuración.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 4</span>Se comienza la comunicación serial a una velocidad de 9600 baudios.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 5</span>Ahora, se finaliza la función de configuración.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 6</span>Luego se inicializa la función del ciclo infinito en donde se pone todo el código que se desea ejecutar.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 7</span>Una vez en la función, se abre el ciclo while el cual siempre entra ya que su argumento es true.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 8</span>Se imprime un mensaje el cual le pide al usuario ingresar el nombre de la materia.</span>
+<span><span class="pr-n mr-3" style="color: blue;"> 9</span>Se almacena la lectura de lo que se ingresa por teclado en cada una de las posiciones del arreglo de materias.</span>
+<span><span class="pr-n mr-3" style="color: blue;">10</span>Luego, se va aumentando de 1 en 1 el sumador el cual corresponde a la variable i.</span>
+<span><span class="pr-n mr-3" style="color: blue;">11</span>Posteriormente, se comprueba si el contador es mayor o igual a 3 con una estructura if.</span>
+<span><span class="pr-n mr-3" style="color: blue;">12</span>De ser así, se rompe el ciclo while utilizando el comando break.</span>
+<span><span class="pr-n mr-3" style="color: blue;">13</span>Se cierra la estructura if.</span>
+<span><span class="pr-n mr-3" style="color: blue;">14</span>Se cierra el ciclo while.</span>
+<span><span class="pr-n mr-3" style="color: blue;">15</span>Ahora se abre un ciclo for el cual va desde 1 hasta 3 en pasos de uno en uno, este sirve para imprimir todo el arreglo de materias.</span>
+<span><span class="pr-n mr-3" style="color: blue;">16</span>Se imprime el arreglo de materias en cada una de las posiciones indexada con el mismo contador del ciclo for.</span>
+<span><span class="pr-n mr-3" style="color: blue;">17</span>Se cierra el ciclo for.</span>
+<span><span class="pr-n mr-3" style="color: blue;">18</span>Por último, se termina la función del ciclo infinito.</span>
+        </code>
+      </pre>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    var num_entradas = 1,
+        cont = 0,
+        valores = []
+
+    document.getElementById('empezar').addEventListener('click', mostrar)
+
+    function mostrar() {
+        document.getElementById('enunciado').className = 'desactivate'
+        document.getElementById('content').className = 'row mx-auto content'
+    }
+
+    document.getElementById('ejecutar').addEventListener('click', () => {
+        document.getElementById('entradas').className = ''
+        document.getElementById('ejecutar').className = 'desactivate'
+        document.getElementById('siguiente_').className = 'button'
+    })
+
+    document.getElementById('siguiente_').addEventListener('click', () => {
+        var valor_entrada = document.getElementById('val0').value
+
+        if(isNaN(valor_entrada)){
+            if(valores.length<=2){
+                valores.push(valor_entrada)
+                document.getElementById('val0').value = ''
+                if(valores.length>2){
+                    document.getElementById('entradas').className = 'desactivate'
+                    document.getElementById('siguiente_').className = 'desactivate'
+                    document.getElementById('reiniciar_').className = 'button'
+                    document.getElementById('salida').className = ''
+                    for(let i=0; i<3; i++){
+                        document.getElementById('resultado').innerHTML += valores[i] + '<br>'
+                    }
+                    document.getElementById('expli').className = 'col-md-5 mx-auto mod1'
+                }
+            }
+        }else{
+            Swal.fire({
+                icon: 'Error',
+                title: 'Dato no válido',
+                text: 'Ingrese una materia!',
+            })
+        }
+    })
+    document.getElementById('reiniciar_').addEventListener('click', () => {
+        location.reload()
+    })
+</script>
+{% endblock scripts %}

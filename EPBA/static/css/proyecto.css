@@ -1,0 +1,71 @@
+.content{
+    background-color: white;
+    padding: 2em;
+}
+#mod{
+    text-align: center;	
+	margin-left: 50px;
+	padding: 15px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#mod1{	
+    text-align: center;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+.mod1{	
+	padding: 20px;
+	border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#mod img{
+    width: 100%;
+}
+#exp{
+    text-align: center;
+    padding: 20px;
+    margin-left: 65px;
+    border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+#exp1{
+    text-align: center;
+    padding: 20px;
+    margin-left: 95px;
+    border-radius: 20px;
+	background-color: rgb(220, 220, 220);
+}
+.desactivate{
+    display: none;
+}
+#code{
+    width: 70%;
+    margin: auto;
+}
+#form-selects{
+    text-align: center;
+    background-color: rgb(190, 190, 190);
+    padding: 10px;
+    border-radius: 10px;
+    max-height: 350px;
+}
+
+.boton button{
+    background-color: blue;
+    color: white;
+    margin-top: 30px;
+}
+
+.boton a{
+    background-color: blue;
+    color: white;
+    /* margin-top: 30px; */
+}
+
+.line-higlight{
+    background-color: rgb(141, 141, 141);
+    display: inline-block;
+    width: 100%;
+}

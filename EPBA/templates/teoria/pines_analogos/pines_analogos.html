@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/teoria.css' %}" type="text/css" media="all">
+{% endblock styles %}
+
+{% block headers %}
+<div id="header-wrapper">
+	<div id="header" class="container row">
+		<div id="logo">
+            <h1>
+                <a href="{% url 'main_app:main' %}">Arduino</a>
+                <img src="{% static 'Im/arduino.png' %}">
+                <img src="{% static 'Im/UTP.png' %}" style="width:8%;">
+            </h1>
+        </div>
+		<div id="menu">
+			<ul>
+				<li><a href="{% url 'main_app:main' %}" accesskey="1">Inicio</a></li>
+				<li><a href="/#page-wrapper" accesskey="2">Proyectos</a></li>
+                <li><a href="/#page-wrapper1" accesskey="3">Teoria</a></li>
+                <li><a href="{% url 'main_app:main' %}" accesskey="4">Volver</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock headers %}
+        
+{% block content %}
+<div class="row mx-auto" id="content">
+    <div class="col-md-12 text-center">
+        <h1>Pines análogos</h1>
+        <br><hr/>
+    </div>
+</div>
+<div class="row mx-auto" id="content" style="margin-left: 105px;">
+    <div class="col-md-5" id="exp">
+        <h2>¿Qué es?</h2>
+        <hr/>
+        <p class="text-justify">
+            Como Arduino es un sistema embebido, está compuesto de bastantes elementos que en este caso permiten una 
+            interacción con el exterior, pues podemos controlar dispositivos que van a tomar acción sobre cosas que pasan 
+            a nivel físico y también podemos leer variables del medio ambiente o de otros sistemas que sirven para luego 
+            ser analizadas y hecho esto, tomar decisiones para realizar una acción sobre ello. Por esta razón, el Arduino 
+            tiene lo que se denominan 6 pines análogos que van desde el A0 hasta el A5, los cuales permiten leer variables 
+            continuas del exterior como la luz, la temperatura, entre otros. Estas medidas se hacen a traves de sensores 
+            que transforman dichos parámetros en voltaje, el cual es el que ingresa posteriormente al pin y este es el que
+            puede ser leído, se sabe que los pines análogos del Arduino son de 10 bits, por lo que el valor que puede tomar 
+            esta entrada está entre 0 y 1023, entonces, una vez se tiene el dato en una variable, se debe de realizar la 
+            respectiva conversión para que este valor que ingresó se convierta en una magnitud real. Además, como Arduino 
+            no es un sistema embebido tan completo y tan especializado, los pines análogos de este solo se pueden utilizar 
+            como entradas más no como salidas. Por último, cabe aclarar que se debe tener cuidado con los valores máximos 
+            que se pueden ingresar a estos pines, pues estos son muy sensibles a sobre cargas y si los límites son excedidos
+            se puede quemar todo el Arduino o el conversor análogo-digital.
+        </p>
+    </div>
+    <div class="col-md-5" id="expimg">
+        <br><br><br><br><br>
+        <img src="{% static 'Im/pinesanalogos.png' %}" style="width: 80%;"/>
+    </div>
+</div>
+<div class="row mx-auto" id="content">
+    <div class="col-md-10" id="exp1">
+        <h2>Sintaxis</h2>
+        <hr/>
+        <p class="text-justify">
+            Para controlar los pines análogos basta con tener dos cosas en cuenta. Primero se sabe que el pin se puede 
+            almacenar en una variable que tenga el nombre del parámetro que se va a leer o se puede poner directamente 
+            el número de dicho pin y segundo, para realizar la lectura de cualquiera de estos pines se debe utilizar el 
+            comando analogRead(), el cual tiene como parámetro el nombre de la variable donde se almacenó el pin o el 
+            número del pin directamente como ya se había mencionado. Una recomendación, es que la lectura de dicho pin 
+            se almacene en una nueva variable para posteriormente realizar diferentes operaciones o acciones con ella.
+        </p>
+        <div class="col-md-8 code mx-auto text-justify">
+            <pre>
+            <code class="language-c++">
+nueva_variable = analogRead(pin_análogo);
+            </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mx-auto" id="ejemplos">
+    <div class="col-lg-12">
+        <h1 class="text-center">Ejemplos</h1><hr/>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #1</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo1' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #2</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo2' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #3</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo3' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" style="margin-left: 75px;">
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #4</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo4' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #5</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo5' %}" class="button">Empezar</a>
+                    </div>
+                    <div class="col-md-3" id="mod">
+                        <h2>Ejemplo #6</h2><br>
+                        <img src="{% static 'Im/arreglos-ejemplos1-2-3-4-5-6.png' %}" style="width: 100%;"/>
+                        <br><br>
+                        <a href="{% url 'pines_analogos_app:ejemplo6' %}" class="button">Empezar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="ant1">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" id="sig1">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
